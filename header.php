@@ -33,8 +33,7 @@
 				[
 					'menu' => 'menu-entete',
 					'container'=> '',
-					'items_wrap'=>'<ul class="ul-menu">%3$s</ul>',
-					'menu_class' => 'ul-menu'					
+					'items_wrap'=>'<ul>%3$s</ul>'				
 				]); 
 				?>
 			</div>

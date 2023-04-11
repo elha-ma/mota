@@ -1,5 +1,6 @@
 
-
+<!--Intégration de la fenêtre modale -->
+<?php get_template_part( '/templates_part/modale' ); ?>
 
 <div class="center">
     <hr/>
