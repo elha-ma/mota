@@ -5,3 +5,80 @@
  Description: Site professionnel de la photographe Nathalie MOTA
  Version: 0.1
 */
+
+/* Appel aux fonts google space mono en local */
+@font-face { 
+	font-family: 'Space Mono';
+	src : url('fonts/SpaceMono-Bold.ttf') format('ttf'),
+          url('fonts/SpaceMono-BoldItalic.ttf') format('ttf'),
+          url('fonts/SpaceMono-Italic.ttf') format('ttf'),
+          url('fonts/SpaceMono-Regular.ttf') format('ttf');    
+}
+
+body {
+    font-family: 'Space Mono', monospace;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* En-tete de la page */
+.header{
+	display: flex;
+	flex-direction: row;  
+    margin: 0 4rem;
+}
+@media screen and (max-width: 768px) {
+   .header{      
+      flex-direction: column;   
+      align-items: center; 
+   }   
+}
+
+/* Permet de positionner les liens de l'entête vers la droite */
+.pos-right {
+    display: flex;
+    margin-left: auto;	
+ }
+ @media screen and (max-width: 768px) {
+    .pos-right{      
+       margin-left: 0;
+    }   
+ }
+
+ /* positionnement du logo */
+ .logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+ /* style du menu de l'en-tête */
+header ul { 
+    display: flex;
+    flex-direction: row;    
+    list-style: none;  
+ }
+ 
+header li{
+     padding: 1rem;  
+ }
+ @media screen and (max-width: 768px) {
+    header li{      
+       padding: 0.5rem 1rem;
+ }
+ }
+ 
+ header li:hover{
+     font-weight:700;
+ } 
+
+ .space-footer{
+    padding: 3rem;
+ }
+
+ .center{
+    text-align: center;
+ }
