@@ -4,9 +4,11 @@
 
   <!-- contenu de la modale-->
   <div class="modal-content">
-    <span class="close">x</span>
-    <div class="display-form"> 
-        
+    <div><span class="close">x</span></div>
+    <div class="fond pos-fond"></div>
+    <div class="fond pos-fond-left"></div>
+
+    <div class="display-form">        
         <div>
             <?php
 		    // On insère le formulaire de demandes de renseignements

@@ -1,15 +1,20 @@
 
-<!--Intégration de la fenêtre modale -->
-<?php get_template_part( '/templates_part/modale' ); ?>
+    <!--Intégration de la fenêtre modale -->
+    <?php get_template_part( '/templates_part/modale' ); ?>
 
-<div class="center">
-    <hr/>
-    <a href="<?php echo home_url( '/' ); ?>" class="space-footer">MENTIONS LÉGALES</a>
-    <a href="<?php echo home_url( '/' ); ?>" class="space-footer">VIE PRIVÉE</a>
-    <a href="<?php echo home_url( '/' ); ?>" class="space-footer">TOUS DROITS RÉSERVÉS</a>
-</div>
-            		
-<?php wp_footer(); ?>
+    <footer>
+        <hr/>
+        <div class="display-center">
+            <?php wp_nav_menu( 
+                            [
+                                'menu' => 'menu-footer',
+                                'container'=> '',
+                                'items_wrap'=>'<ul>%3$s</ul>'				
+                            ]); 
+                            ?>  
+        </div>                          
+        <?php wp_footer(); ?>
+    </footer>
 
 </body>
 </html>

@@ -3,7 +3,7 @@
 function mota_setup() {
     //charger le logo du site 
     add_theme_support( 'custom-logo' );
-    
+
     //charge le titre du site
     add_theme_support('title-tag');
     //add_theme_support( 'post-thumbnails' );
@@ -11,6 +11,7 @@ function mota_setup() {
     //Gestion des menus dans wordpress
     add_theme_support('menus');
     register_nav_menu('header','En tête de la page');
+    register_nav_menu('footer','Pieds de page');
 }
 add_action('after_setup_theme', 'mota_setup');
 
