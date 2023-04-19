@@ -29,4 +29,11 @@ function charger_scripts() {
     wp_register_script( 'scripts_site', get_stylesheet_directory_uri() . '/js/scripts.js' );
     wp_enqueue_script( 'scripts_site'); 	   
 }
-add_action( 'wp_enqueue_scripts', 'charger_scripts');
+//add_action( 'wp_enqueue_scripts', 'charger_scripts');
+
+function theme_scripts() {
+    wp_enqueue_script('script', get_stylesheet_directory_uri() . '/js/scripts.js', array('jquery'), '', true);
+}
+add_action('wp_footer', 'theme_scripts');
+
+

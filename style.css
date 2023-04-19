@@ -182,3 +182,48 @@ input, textarea{
 .pos-fond-left{
     background-position: left;
 }
+
+/*Affichage de la page single */
+.display-photo{
+    display: flex;
+    flex-direction: row;
+    margin: 2rem;
+}
+
+.display-infos{
+    display: flex;
+    flex-direction: column;
+}
+
+.half{
+    width: 50%;
+}
+
+h1{
+    font-size: 4rem;
+}
+
+.marge{
+    margin: 0.5rem;
+}
+
+.image-single{
+    object-fit: cover;
+    height: 80vh;
+    width: 45vw;
+}
+
+.bloc-infos{
+    margin-top: auto; 
+}
+
+.contact-single{
+    display: flex;
+    flex-direction: row;
+    height: 118px;
+    margin: 2rem;
+}
+
+.pos-vignette{
+    margin-left: auto;
+}
