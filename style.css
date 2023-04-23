@@ -227,3 +227,10 @@ h1{
 .pos-vignette{
     margin-left: auto;
 }
+
+/*Taille des images de la page d'accueil et single */
+.display-img{
+    object-fit: cover;
+    height: 80vh;
+    width: 46vw;
+}

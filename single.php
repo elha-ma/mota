@@ -1,28 +1,23 @@
 <?php
-/**
- * The template for displaying all single posts
- */
 
 get_header();
 
-// définition des arguments pour les données qu'on veut afficher
+// Définition des arguments de la photo à afficher 
 $args = array(
-    'post_type' => 'photo',
-    'tax_query' => array(
-        array (
-            'taxonomy' => 'categorie',
-            'field' => 'slug',
-            'terms' => 'television',
-        ) )
+    'post_type' => 'photo', // Nom du Custom Post Type
+    'meta_key' => 'reference_photo', // nom du champ ACF
+    'meta_value' => 'bf2389', //Référence de la photo
 );
 
-// on exécute la WP Query
+// On exécute la WP Query
 $my_query = new WP_Query( $args );
+//echo "nombre photos:",$wp_query->post_count;
 
-// on parcoure les données
-if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->the_post();
+// On a un seul résultat 
+if ($my_query->have_posts()) : $my_query->the_post();
 ?>
-    <!-- La partie photo et ses infos -->
+
+<!-- La partie photo et ses infos -->
 <div class="display-photo">
 	<div class="half bloc-infos">
         <h1><?php the_title(); ?></h1>
@@ -38,26 +33,39 @@ if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->th
     </div>
 </div>
     
-
 <!-- La partie contact et défiler les photos -->
 <div class="contact-single">
 	<div> 
         Cette photo vous intéresse ?  <b>|</b> <span id="contact"><a href="#?ref=<?php the_field( 'reference_photo' ); ?>"> Contact </a></span>  
     </div>
-	<div class="pos-vignette"> ------- </div>
-    
+	<div class="pos-vignette"> ------- </div>    
 </div>
 
-<!-- La gallerie des photos -->
-<div>
-	
-</div>
 <?php
 
-endwhile;
+//identifiant et catégorie de la photo affichée
+$term_id = get_the_ID();
+$terms = get_the_terms( $term_id, 'categorie' );
+$term_categorie = $terms[0]->name;
+
 endif;
 
 // on réinitialise à la requête principale 
 wp_reset_postdata(); ?>
 
+
+<!-- La gallerie des photos apparentées-->
+<div>
+    <hr/>
+	<p>VOUS AIMEREZ AUSSI</p>
+
+    <!--Intégration de la template d'affichage des photos en bloc --> 
+    <?php     
+    //on transmets les variables via set_query_var
+    set_query_var( 'term_id', $term_id );
+    set_query_var( 'term_categorie', $term_categorie );
+    get_template_part( '/templates_part/photo_block' ); ?>
+</div>
+
 <?php get_footer(); ?>
+
