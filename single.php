@@ -6,7 +6,7 @@ get_header();
 $args = array(
     'post_type' => 'photo', // Nom du Custom Post Type
     'meta_key' => 'reference_photo', // nom du champ ACF
-    'meta_value' => 'bf2389', //Référence de la photo
+    'meta_value' => 'bf2400', //Référence de la photo
 );
 
 // On exécute la WP Query
@@ -28,8 +28,8 @@ if ($my_query->have_posts()) : $my_query->the_post();
         </div>
         <hr/>
     </div>
-	<div class="half">   
-        <img src="<?php echo the_field( 'image_photo' ); ?>" alt="Photo Mota" class="image-single">
+	<div class="half">        
+        <?php the_post_thumbnail('full', array('class' => 'image-single')); ?>
     </div>
 </div>
     

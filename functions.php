@@ -3,10 +3,10 @@
 function mota_setup() {
     //charger le logo du site 
     add_theme_support( 'custom-logo' );
-
-    //charge le titre du site
+    //charger le titre du site
     add_theme_support('title-tag');
-    //add_theme_support( 'post-thumbnails' );
+    //les images vignettes (images vedette)
+    add_theme_support( 'post-thumbnails' );
   
     //Gestion des menus dans wordpress
     add_theme_support('menus');

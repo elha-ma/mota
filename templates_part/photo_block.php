@@ -27,8 +27,8 @@ if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->th
     if ($i == 0) { 
         ?>
             <div class="display-photo">
-                <div class="half">
-                    <img src="<?php echo the_field( 'image_photo' ); ?>" alt="Photo Mota" class="display-img">
+                <div class="half">                   
+                    <?php the_post_thumbnail('full', array('class' => 'display-img')); ?>
                 </div>
         <?php    
         $i++; 
@@ -36,7 +36,7 @@ if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->th
     else { 
         $i = 0; ?>
             <div class="half">
-                <img src="<?php echo the_field( 'image_photo' ); ?>" alt="Photo Mota" class="display-img">
+                <?php the_post_thumbnail('full', array('class' => 'display-img')); ?>
             </div>
         </div>    
     <?php

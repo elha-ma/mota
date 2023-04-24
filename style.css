@@ -17,6 +17,8 @@
 
 body {
     font-family: 'Space Mono', monospace;
+    margin:0;
+    padding:0;
 }
 
 a{
@@ -233,4 +235,19 @@ h1{
     object-fit: cover;
     height: 80vh;
     width: 46vw;
+}
+
+/*format de la photo du herpo header */
+.hero-header{
+    object-fit: cover;
+    height: 100vh;
+    width: 100vw;
+    max-width: 100%;
+}
+
+/*Le titre affiché sur l'image du hero header */
+.title-hero{
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
 }
