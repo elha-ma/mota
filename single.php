@@ -2,11 +2,15 @@
 
 get_header();
 
+//On récupère l'identifiant de la photo principale
+$id_photo = get_the_id();
+
 // Définition des arguments de la photo à afficher 
 $args = array(
     'post_type' => 'photo', // Nom du Custom Post Type
-    'meta_key' => 'reference_photo', // nom du champ ACF
-    'meta_value' => 'bf2400', //Référence de la photo
+    'p' => $id_photo,
+    //'meta_key' => 'reference_photo', // nom du champ ACF
+   // 'meta_value' => 'bf2400', //Référence de la photo
 );
 
 // On exécute la WP Query
@@ -33,13 +37,7 @@ if ($my_query->have_posts()) : $my_query->the_post();
     </div>
 </div>
     
-<!-- La partie contact et défiler les photos -->
-<div class="contact-single">
-	<div> 
-        Cette photo vous intéresse ?  <b>|</b> <span id="contact"><a href="#?ref=<?php the_field( 'reference_photo' ); ?>"> Contact </a></span>  
-    </div>
-	<div class="pos-vignette"> ------- </div>    
-</div>
+
 
 <?php
 
@@ -53,6 +51,23 @@ endif;
 // on réinitialise à la requête principale 
 wp_reset_postdata(); ?>
 
+<!-- La partie contact et défiler les photos -->
+<div class="contact-single">
+	<div> 
+        Cette photo vous intéresse ?  <b>|</b> <span id="contact"><a href="#?ref=<?php the_field( 'reference_photo' ); ?>"> Contact </a></span>  
+    </div>
+	<div class="pos-vignette">         
+        <?php 
+        // Previous/next post navigation.
+        the_post_navigation(
+            array(
+                'next_text' => '<div>&#10230;</div>',
+                'prev_text' => '<div>&#10229;</div>',
+            )
+        );  
+        ?>
+    </div>    
+</div>
 
 <!-- La gallerie des photos apparentées-->
 <div>

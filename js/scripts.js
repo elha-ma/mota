@@ -19,7 +19,7 @@ function gestion_popup(){
     // On récupère le bouton contact
     var btn = document.getElementById("menu-item-26");
     var btncontact = document.getElementById("contact");
-    console.log(btncontact);
+    //console.log(btncontact);
     
     // L'élément de fermeture de la modale
     var span = document.getElementsByClassName("close")[0];
@@ -28,8 +28,10 @@ function gestion_popup(){
     btn.onclick = function() {
         modal.style.display = "block";
     }
-    btncontact.onclick = function() {
-        modal.style.display = "block";
+    if (btncontact !== null) {
+        btncontact.onclick = function() {
+            modal.style.display = "block";
+        }
     }
 
     // Fermeture de la popup

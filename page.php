@@ -30,6 +30,9 @@ endwhile;
 endif; 
 wp_reset_postdata();
 
+//Affichage de toutes les photos
+get_template_part( '/templates_part/photo_block' );
+
 //Pied de page 
 get_footer(); 
 ?>

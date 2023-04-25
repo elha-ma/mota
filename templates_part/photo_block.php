@@ -1,18 +1,24 @@
 <?php
 
 // Sélection des posts photos à afficher 
-$args = array(
-    'post_type' => 'photo', 
-    'tax_query' => array(
-        array(
-            'taxonomy' => 'categorie',
-            'terms' => $term_categorie,
-            'field' => 'slug',
-        )
-    ),
-    //on exclut la photo principal
-    'post__not_in' => array ($term_id),
-);
+if (is_single()){
+    $args = array(
+        'post_type' => 'photo', 
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'categorie',
+                'terms' => $term_categorie,
+                'field' => 'slug',
+            )
+        ),
+        //on exclut la photo principal
+        'post__not_in' => array ($term_id),
+    );
+} else {
+    $args = array(
+        'post_type' => 'photo', 
+    );
+}
 
 // on exécute la WP Query
 $my_query = new WP_Query( $args );
@@ -23,12 +29,14 @@ $count = count( $my_query->posts );
 // on parcoure les données
 $i = 0;
 if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->the_post();
-    
+
+    $id = get_the_ID();
+
     if ($i == 0) { 
         ?>
             <div class="display-photo">
                 <div class="half">                   
-                    <?php the_post_thumbnail('full', array('class' => 'display-img')); ?>
+                    <a href="<?php echo get_post_permalink ($id);?>"><?php the_post_thumbnail('full', array('class' => 'display-img')); ?></a>
                 </div>
         <?php    
         $i++; 
@@ -36,7 +44,7 @@ if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->th
     else { 
         $i = 0; ?>
             <div class="half">
-                <?php the_post_thumbnail('full', array('class' => 'display-img')); ?>
+                 <a href="<?php echo get_post_permalink ($id);?>"><?php the_post_thumbnail('full', array('class' => 'display-img')); ?></a>
             </div>
         </div>    
     <?php
