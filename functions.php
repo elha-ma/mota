@@ -35,5 +35,3 @@ function theme_scripts() {
     wp_enqueue_script('script', get_stylesheet_directory_uri() . '/js/scripts.js', array('jquery'), '', true);
 }
 add_action('wp_footer', 'theme_scripts');
-
-
