@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         $(".refer").val($('#reference-photo').text());
     });
 
+    //Charger plus de photos    
+    charger_photos();  
 })
 
 function gestion_popup(){
@@ -38,4 +40,33 @@ function gestion_popup(){
     span.onclick = function() {
         modal.style.display = "none";
     }
+}
+
+function charger_photos(){
+    jQuery(document).ready(function($){   
+
+        let currentPage = 1;
+        $('#load-more').on('click', function(e) {
+            e.preventDefault();
+            currentPage++;        
+            console.log(currentPage);    
+            //supprimer bouton charger plus
+            $('#btn-load-more').remove();
+            
+            $.ajax({
+                type: 'GET',
+                url: '/photos-mota/wp-admin/admin-ajax.php',
+                dataType: 'html',
+                data: {
+                action: 'action_load_more',
+                paged: currentPage,
+                },
+                success: function (res) {
+                    
+                $('.suite-photos').append(res);
+                },
+             
+            });
+        });
+    });
 }

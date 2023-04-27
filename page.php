@@ -29,10 +29,34 @@ if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->th
 endwhile;
 endif; 
 wp_reset_postdata();
-
-//Affichage de toutes les photos
-get_template_part( '/templates_part/photo_block' );
-
-//Pied de page 
-get_footer(); 
 ?>
+<!--Partie Filtres: Par catégorie et par format -->
+<div>
+	<div>
+		<label>CATEGORIES</label>
+	</div>
+	<div>
+		<select name="cat" id="select-cat">
+			<option value="">--</option>
+			<option value="concert">Concert</option>
+			<option value="reception">Réception</option>
+			<option value="mariage">Mariage</option>
+			<option value="television">Télévision</option>
+		</select>
+	</div>
+</div>
+
+<?php 
+//Affichage de toutes les photos
+$args = array(
+	'post_type' => 'photo', 
+	'posts_per_page' => 2,
+	'paged' => 1,
+); ?>
+>
+<?php 
+//get_template_part( '/templates_part/photo_block' ); 
+require_once( locate_template( 'templates_part/photo_block.php' ) );?>
+
+
+<?php get_footer(); ?>

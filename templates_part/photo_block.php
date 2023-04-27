@@ -1,24 +1,6 @@
-<?php
 
-// Sélection des posts photos à afficher 
-if (is_single()){
-    $args = array(
-        'post_type' => 'photo', 
-        'tax_query' => array(
-            array(
-                'taxonomy' => 'categorie',
-                'terms' => $term_categorie,
-                'field' => 'slug',
-            )
-        ),
-        //on exclut la photo principal
-        'post__not_in' => array ($term_id),
-    );
-} else {
-    $args = array(
-        'post_type' => 'photo', 
-    );
-}
+<div class="suite-photos">
+<?php
 
 // on exécute la WP Query
 $my_query = new WP_Query( $args );
@@ -28,6 +10,7 @@ $count = count( $my_query->posts );
 
 // on parcoure les données
 $i = 0;
+
 if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->the_post();
 
     $id = get_the_ID();
@@ -64,4 +47,11 @@ if ( $count == 0) {
 
 // on réinitialise à la requête principale 
 wp_reset_postdata(); ?>
+</div>
+
+<!--bouton pour charger plus de photos -->
+<div id="btn-load-more">
+  <a href="#!" id="load-more">Charger plus</a>
+</div>
+
 

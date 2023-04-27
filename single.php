@@ -15,7 +15,6 @@ $args = array(
 
 // On exécute la WP Query
 $my_query = new WP_Query( $args );
-//echo "nombre photos:",$wp_query->post_count;
 
 // On a un seul résultat 
 if ($my_query->have_posts()) : $my_query->the_post();
@@ -77,9 +76,27 @@ wp_reset_postdata(); ?>
     <!--Intégration de la template d'affichage des photos en bloc --> 
     <?php     
     //on transmets les variables via set_query_var
-    set_query_var( 'term_id', $term_id );
-    set_query_var( 'term_categorie', $term_categorie );
-    get_template_part( '/templates_part/photo_block' ); ?>
+   // set_query_var( 'term_id', $term_id );
+   // set_query_var( 'term_categorie', $term_categorie );
+    $args = array(
+        'post_type' => 'photo', 
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'categorie',
+                'terms' => $term_categorie,
+                'field' => 'slug',
+            )
+        ),
+        //on exclut la photo principal
+        'post__not_in' => array ($term_id),
+        'posts_per_page' => 2,
+    );
+   
+    //get_template_part( '/templates_part/photo_block'); 
+    require_once( locate_template( 'templates_part/photo_block.php' ) );
+    
+    
+    ?>
 </div>
 
 <?php get_footer(); ?>

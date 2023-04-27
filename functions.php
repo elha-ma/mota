@@ -35,3 +35,22 @@ function theme_scripts() {
     wp_enqueue_script('script', get_stylesheet_directory_uri() . '/js/scripts.js', array('jquery'), '', true);
 }
 add_action('wp_footer', 'theme_scripts');
+
+//fonction AJAX pour la pagination 
+function action_load_more() {  
+    $response = '';
+    $args = array(
+        'post_type' => 'photo', 
+        'posts_per_page' => 2,
+        'paged' => $_GET['paged'],
+    );
+    
+    //$response .= get_template_part('/templates_part/photo_block', 'photo');
+   $response .= require_once( locate_template( 'templates_part/photo_block.php' ) );
+        
+   //echo $response;
+   exit;
+  }
+  add_action('wp_ajax_action_load_more', 'action_load_more');
+  add_action('wp_ajax_nopriv_action_load_more', 'action_load_more');
+
