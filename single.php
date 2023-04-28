@@ -97,6 +97,11 @@ wp_reset_postdata(); ?>
     
     
     ?>
+
+    <!--bouton pour charger plus de photos -->
+    <div id="btn-load-more">
+        <a href="#!" id="load-more">Charger plus</a>
+    </div>
 </div>
 
 <?php get_footer(); ?>

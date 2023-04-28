@@ -1,5 +1,5 @@
 
-<div class="suite-photos">
+
 <?php
 
 // on exécute la WP Query
@@ -47,11 +47,7 @@ if ( $count == 0) {
 
 // on réinitialise à la requête principale 
 wp_reset_postdata(); ?>
-</div>
 
-<!--bouton pour charger plus de photos -->
-<div id="btn-load-more">
-  <a href="#!" id="load-more">Charger plus</a>
-</div>
+
 
 

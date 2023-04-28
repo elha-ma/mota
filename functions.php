@@ -44,10 +44,10 @@ function action_load_more() {
         'posts_per_page' => 2,
         'paged' => $_GET['paged'],
     );
-    
+
     //$response .= get_template_part('/templates_part/photo_block', 'photo');
    $response .= require_once( locate_template( 'templates_part/photo_block.php' ) );
-        
+
    //echo $response;
    exit;
   }

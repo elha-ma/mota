@@ -53,10 +53,15 @@ $args = array(
 	'posts_per_page' => 2,
 	'paged' => 1,
 ); ?>
->
+<div class="suite-photos">
 <?php 
 //get_template_part( '/templates_part/photo_block' ); 
 require_once( locate_template( 'templates_part/photo_block.php' ) );?>
+</div>
 
+<!--bouton pour charger plus de photos -->
+<div id="btn-load-more">
+  <a href="#!" id="load-more">Charger plus</a>
+</div>
 
 <?php get_footer(); ?>
