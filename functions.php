@@ -36,7 +36,7 @@ function theme_scripts() {
 }
 add_action('wp_footer', 'theme_scripts');
 
-//fonction AJAX pour la pagination 
+//fonction pour la pagination 
 function action_load_more() {  
     $response = '';
     $args = array(
@@ -47,8 +47,7 @@ function action_load_more() {
 
     //$response .= get_template_part('/templates_part/photo_block', 'photo');
    $response .= require_once( locate_template( 'templates_part/photo_block.php' ) );
-
-   //echo $response;
+   
    exit;
   }
   add_action('wp_ajax_action_load_more', 'action_load_more');

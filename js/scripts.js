@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         $(".refer").val($('#reference-photo').text());
     });
 
-    //Charger plus de photos    
+    //Fonction AJAX pour charger plus de photos    
     charger_photos();  
 })
 
@@ -47,7 +47,6 @@ function charger_photos(){
 
         let currentPage = 1;
         $('#load-more').on('click', function() {
-
             currentPage++;        
             console.log(currentPage);                
             $.ajax({
@@ -58,11 +57,17 @@ function charger_photos(){
                 action: 'action_load_more',
                 paged: currentPage,
                 },
-                success: function (response) {                    
+                success: function (response) {   
+                    //Quand on arrive à la fin des posts, on cache le bouton charger plus
+                    var maxpages = $('input[name="max-pages"]').val();
+                    if( currentPage >= maxpages) {
+                        $('#load-more').hide();
+                    }                            
                     $('.suite-photos').append(response);          
                 },
         
             });
         });
+        
     });
 }
