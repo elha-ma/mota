@@ -99,8 +99,8 @@ wp_reset_postdata(); ?>
     ?>
 
     <!--bouton pour charger plus de photos -->
-    <div id="btn-load-more">
-        <a href="#!" id="load-more">Charger plus</a>
+    <div id="btn-load-all">
+        <a href="#!" id="load-all">Toutes les photos</a>
     </div>
 </div>
 

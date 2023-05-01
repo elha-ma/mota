@@ -53,7 +53,8 @@ require_once( locate_template( 'templates_part/photo_block.php' ) );?>
 
 <!--bouton pour charger plus de photos -->
 <div id="btn-load-more">
-  <a href="#!" id="load-more">Charger plus</a>
+  
+  <input type="button" value="Charger plus" id="load-more" />
 </div>
 
 <?php get_footer(); ?>

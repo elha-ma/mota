@@ -42,7 +42,7 @@ function action_load_more() {
     $args = array(
         'post_type' => 'photo', 
         'posts_per_page' => 2,
-        'paged' => $_GET['paged'],
+      //  'paged' => $_GET['paged'],
     );
 
     //$response .= get_template_part('/templates_part/photo_block', 'photo');
@@ -56,11 +56,11 @@ add_action('wp_ajax_nopriv_action_load_more', 'action_load_more');
 //fonction pour les filtres
 function filtre_photos() {  
     $response = '';
-    $tax_query = '';
-    $categorie = $_GET['categorie'];
+    $tax_query = ''; 
+    $categorie = $_GET['categorie']; 
     $format = $_GET['format'];
-    $num_page = $_GET['paged'];
-    $tri = $_GET['tri'];    
+    $num_page = $_GET['paged']; 
+    $tri = $_GET['tri'];   
 
     //On détermine les conditions de filtre et de tri
     if ($categorie != "tous" and $format != "tous"){     
@@ -105,7 +105,7 @@ function filtre_photos() {
         'paged' => $num_page,
         'tax_query' => $tax_query,
     );
-
+    //var_dump($args); 
     $response .= require_once( locate_template( 'templates_part/photo_block.php' ) );
     exit;
 }

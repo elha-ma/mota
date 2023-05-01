@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     //Fonction AJAX pour charger les photos (load more)
-    charger_photos();  
+    charger_photos_page();  
 
     //Filtrer les photos en fonction de la catégorie et du format
     filtrer_photos();
@@ -48,6 +48,36 @@ function gestion_popup(){
 function charger_photos(){
     jQuery(document).ready(function($){   
 
+       // let currentPage = 1;
+        $('#load-all').on('click', function() {
+         //   currentPage++;        
+            console.log(currentPage);                
+            $.ajax({
+                type: 'GET',
+                url: '/photos-mota/wp-admin/admin-ajax.php',
+                dataType: 'html',
+                data: {
+                action: 'action_load_more',
+               // paged: currentPage,
+                },
+                success: function (response) {   
+                    //Quand on arrive à la fin des posts, on cache le bouton charger plus
+                   // var maxpages = $('input[name="max-pages"]').val();
+                   // if( currentPage >= maxpages) {
+                    //    $('#load-more').hide();
+                   // }                            
+                    $('.suite-photos').append(response);          
+                },
+        
+            });
+        });
+        
+    });
+}
+
+function charger_photos_page(){
+    jQuery(document).ready(function($){   
+
         let currentPage = 1;
         $('#load-more').on('click', function() {
             currentPage++;        
@@ -57,8 +87,11 @@ function charger_photos(){
                 url: '/photos-mota/wp-admin/admin-ajax.php',
                 dataType: 'html',
                 data: {
-                action: 'action_load_more',
-                paged: currentPage,
+                    categorie: $('select[id="select-cat"]').val() ,        
+                    format: $('select[id="select-format"]').val() , 
+                    tri: $('select[id="select-tri"]').val() , 
+                    action: 'filtre_photos',                
+                    paged: currentPage,
                 },
                 success: function (response) {   
                     //Quand on arrive à la fin des posts, on cache le bouton charger plus
@@ -75,12 +108,12 @@ function charger_photos(){
     });
 }
 
+
 function filtrer_photos(){
     jQuery(document).ready(function($){   
-        let currentPage = 1;
+      //  let currentPage = 1;
         $('.sel-option').on('change', function() {            
-            currentPage++;        
-                
+         //   currentPage++;                        
             $.ajax({
                 type: 'GET',
                 url: '/photos-mota/wp-admin/admin-ajax.php',
@@ -90,7 +123,7 @@ function filtrer_photos(){
                 format: $('select[id="select-format"]').val() , 
                 tri: $('select[id="select-tri"]').val() , 
                 action: 'filtre_photos',
-                paged: currentPage,
+              //  paged: currentPage,
                 },
                 success: function (response) {     
                     console.log(response);   
@@ -100,10 +133,10 @@ function filtrer_photos(){
                     $('#msg-photo').remove();
 
                     //On affiche les photos filtrées 
-                    var maxpages = $('input[name="max-pages"]').val();
-                    if( currentPage >= maxpages) {
-                        $('#load-more').hide();
-                    }                            
+                  //  var maxpages = $('input[name="max-pages"]').val();
+                  //  if( currentPage >= maxpages) {
+                  //      $('#load-more').hide();
+                  //  }                            
                     $('.suite-photos').append(response);         
                 },
                

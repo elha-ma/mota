@@ -5,6 +5,7 @@ $my_query = new WP_Query( $args );
 
 //Nombre de posts trouvés
 $count = count( $my_query->posts );
+//echo "nombre de posts:", $count;
 
 //Nombre de pages que renvoi la requête
 $max_pages = $my_query->max_num_pages;
@@ -43,7 +44,7 @@ if ( ($count)%2 == 1 ) {
 endif;
 
 if ( $count == 0) { 
-    echo "<p id='msg-photo'><b>Il n'y a pas d'autres photos dans cette catégorie</b></p>";
+    echo "<p id='msg-photo'><b>Il n'y a pas de/d'autres photos dans cette catégorie</b></p>";
 }?>
 
 <!--on transmet le nombre de pages pour gérer l'affichage du bouton 'charger plus' -->
