@@ -47,9 +47,67 @@ function action_load_more() {
 
     //$response .= get_template_part('/templates_part/photo_block', 'photo');
    $response .= require_once( locate_template( 'templates_part/photo_block.php' ) );
-   
-   exit;
-  }
-  add_action('wp_ajax_action_load_more', 'action_load_more');
-  add_action('wp_ajax_nopriv_action_load_more', 'action_load_more');
 
+   exit;
+}
+add_action('wp_ajax_action_load_more', 'action_load_more');
+add_action('wp_ajax_nopriv_action_load_more', 'action_load_more');
+
+//fonction pour les filtres
+function filtre_photos() {  
+    $response = '';
+    $tax_query = '';
+    $categorie = $_GET['categorie'];
+    $format = $_GET['format'];
+    $num_page = $_GET['paged'];
+    $tri = $_GET['tri'];    
+
+    //On détermine les conditions de filtre et de tri
+    if ($categorie != "tous" and $format != "tous"){     
+        $tax_query = array(
+            'relation' => 'AND',
+            array(
+                'taxonomy' => 'categorie',
+                'field' => 'slug',
+                'terms' => $categorie,
+            ),
+            array(
+                'taxonomy' => 'format',
+                'field' => 'slug',
+                'terms' => $format,
+            ),
+        );        
+    } 
+    if ($categorie != "tous" and $format == "tous" ){
+        $tax_query = array(
+            array(
+                'taxonomy' => 'categorie',
+                'field' => 'slug',
+                'terms' => $categorie,
+            ),
+        );
+    } 
+    if ($categorie == "tous" and $format != "tous" ){
+        $tax_query = array(
+            array(
+                'taxonomy' => 'format',
+                'field' => 'slug',
+                'terms' => $format,
+            ),
+        );
+    }
+
+    //Les arguments de filtres et de tri des photos (tout en un)
+    $args = array(
+        'post_type' => 'photo',
+        'order' => $tri,
+        'posts_per_page' => 4,
+        'paged' => $num_page,
+        'tax_query' => $tax_query,
+    );
+
+    $response .= require_once( locate_template( 'templates_part/photo_block.php' ) );
+    exit;
+}
+add_action('wp_ajax_filtre_photos', 'filtre_photos');
+add_action('wp_ajax_nopriv_filtre_photos', 'filtre_photos');

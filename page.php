@@ -30,29 +30,21 @@ endwhile;
 endif; 
 wp_reset_postdata();
 ?>
+
+
 <!--Partie Filtres: Par catégorie et par format -->
 <div>
-	<div>
-		<label>CATEGORIES</label>
-	</div>
-	<div>
-		<select name="cat" id="select-cat">
-			<option value="">--</option>
-			<option value="concert">Concert</option>
-			<option value="reception">Réception</option>
-			<option value="mariage">Mariage</option>
-			<option value="television">Télévision</option>
-		</select>
-	</div>
+	<?php require_once( locate_template( 'templates_part/options_filtres.php' ) );?>
 </div>
 
 <?php 
 //Affichage de toutes les photos
 $args = array(
 	'post_type' => 'photo', 
-	'posts_per_page' => 2,
+	'posts_per_page' => 4,
 	'paged' => 1,
 ); ?>
+
 <div class="suite-photos">
 <?php 
 //get_template_part( '/templates_part/photo_block' ); 

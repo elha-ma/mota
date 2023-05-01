@@ -252,8 +252,21 @@ h1{
     top: 0; left: 0; bottom: 0; right: 0;
 }
 
-/*Format des filtres */
-#select-cat{
+/*Affichage du tri et des filtres */
+select{
     height: 2rem;
     width: 15rem;
+}
+
+.display-tax{
+    display: flex;
+    flex-direction: row;
+}
+
+.space-right{
+    margin-right: 2rem;
+}
+
+.pos-tri{
+    margin-left: auto;
 }

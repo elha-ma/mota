@@ -1,5 +1,3 @@
-
-
 <?php
 
 // on exécute la WP Query
@@ -45,7 +43,7 @@ if ( ($count)%2 == 1 ) {
 endif;
 
 if ( $count == 0) { 
-    echo "<p><b>Il n'y a pas d'autres photos dans cette catégorie</b></p>";
+    echo "<p id='msg-photo'><b>Il n'y a pas d'autres photos dans cette catégorie</b></p>";
 }?>
 
 <!--on transmet le nombre de pages pour gérer l'affichage du bouton 'charger plus' -->
