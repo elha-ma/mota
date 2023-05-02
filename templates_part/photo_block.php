@@ -5,11 +5,11 @@ $my_query = new WP_Query( $args );
 
 //Nombre de posts trouvés
 $count = count( $my_query->posts );
-//echo "nombre de posts:", $count;
 
 //Nombre de pages que renvoi la requête
 $max_pages = $my_query->max_num_pages;
-
+//echo "nombre posts : ", $count;
+//echo "max pages  : ", $max_pages;
 // on parcoure les données
 $i = 0;
 

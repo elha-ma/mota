@@ -270,3 +270,7 @@ select{
 .pos-tri{
     margin-left: auto;
 }
+
+#load-more{
+    width: 100px;
+}

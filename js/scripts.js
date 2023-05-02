@@ -1,6 +1,8 @@
 
 //DOMContentLoaded permet de s'assurer qu'on a bien chargé notre DOM avant d'éxécuter les scripts
 document.addEventListener('DOMContentLoaded', (event) => {
+    //déclaration d'une variable globale pour la gestion des filtres et tri
+    raz_numpage = false;
 
     //Gestion de la popup
     gestion_popup();
@@ -47,10 +49,7 @@ function gestion_popup(){
 
 function charger_photos(){
     jQuery(document).ready(function($){   
-
-       // let currentPage = 1;
-        $('#load-all').on('click', function() {
-         //   currentPage++;        
+        $('#load-all').on('click', function() {     
             console.log(currentPage);                
             $.ajax({
                 type: 'GET',
@@ -58,17 +57,10 @@ function charger_photos(){
                 dataType: 'html',
                 data: {
                 action: 'action_load_more',
-               // paged: currentPage,
                 },
-                success: function (response) {   
-                    //Quand on arrive à la fin des posts, on cache le bouton charger plus
-                   // var maxpages = $('input[name="max-pages"]').val();
-                   // if( currentPage >= maxpages) {
-                    //    $('#load-more').hide();
-                   // }                            
+                success: function (response) {                               
                     $('.suite-photos').append(response);          
-                },
-        
+                },        
             });
         });
         
@@ -79,8 +71,15 @@ function charger_photos_page(){
     jQuery(document).ready(function($){   
 
         let currentPage = 1;
+    
         $('#load-more').on('click', function() {
-            currentPage++;        
+            if (raz_numpage){
+                currentPage = 2;
+                raz_numpage = false;
+            } else{
+                currentPage++;  
+            }              
+                  
             console.log(currentPage);                
             $.ajax({
                 type: 'GET',
@@ -90,16 +89,23 @@ function charger_photos_page(){
                     categorie: $('select[id="select-cat"]').val() ,        
                     format: $('select[id="select-format"]').val() , 
                     tri: $('select[id="select-tri"]').val() , 
-                    action: 'filtre_photos',                
                     paged: currentPage,
+                    action: 'filtre_photos',               
                 },
                 success: function (response) {   
                     //Quand on arrive à la fin des posts, on cache le bouton charger plus
                     var maxpages = $('input[name="max-pages"]').val();
+                    //console.log("maxpages : ", maxpages);
+                    
+                    if (maxpages <= 1) {
+                        $('#load-more').hide();
+                    } else {
+                        $('#load-more').show();
+                    }    
                     if( currentPage >= maxpages) {
                         $('#load-more').hide();
-                    }                            
-                    $('.suite-photos').append(response);          
+                    }                                   
+                    $('.suite-photos').append(response);       
                 },
         
             });
@@ -111,9 +117,9 @@ function charger_photos_page(){
 
 function filtrer_photos(){
     jQuery(document).ready(function($){   
-      //  let currentPage = 1;
-        $('.sel-option').on('change', function() {            
-         //   currentPage++;                        
+
+        $('.sel-option').on('change', function() {  
+            raz_numpage = true;
             $.ajax({
                 type: 'GET',
                 url: '/photos-mota/wp-admin/admin-ajax.php',
@@ -123,21 +129,24 @@ function filtrer_photos(){
                 format: $('select[id="select-format"]').val() , 
                 tri: $('select[id="select-tri"]').val() , 
                 action: 'filtre_photos',
-              //  paged: currentPage,
+                //paged: '1',
                 },
                 success: function (response) {     
-                    console.log(response);   
+                    
                     //On supprime les photos affichés pour permettre l'affichage des photos suivant les nouvelles conditions 
                     $('.display-photo').remove();
                     $('#max-pages').remove();
                     $('#msg-photo').remove();
-
-                    //On affiche les photos filtrées 
-                  //  var maxpages = $('input[name="max-pages"]').val();
-                  //  if( currentPage >= maxpages) {
-                  //      $('#load-more').hide();
-                  //  }                            
-                    $('.suite-photos').append(response);         
+                                     
+                    var maxpages = $('input[name="max-pages"]').val();
+                   
+                    if (maxpages <= 1) {
+                        $('#load-more').hide();
+                    } else {
+                        $('#load-more').show();
+                    }             
+                    $('.suite-photos').append(response);                   
+                            
                 },
                
             });

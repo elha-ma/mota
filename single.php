@@ -9,8 +9,6 @@ $id_photo = get_the_id();
 $args = array(
     'post_type' => 'photo', // Nom du Custom Post Type
     'p' => $id_photo,
-    //'meta_key' => 'reference_photo', // nom du champ ACF
-   // 'meta_value' => 'bf2400', //Référence de la photo
 );
 
 // On exécute la WP Query
@@ -93,8 +91,7 @@ wp_reset_postdata(); ?>
     );
    
     //get_template_part( '/templates_part/photo_block'); 
-    require_once( locate_template( 'templates_part/photo_block.php' ) );
-    
+    require_once( locate_template( 'templates_part/photo_block.php' ) );    
     
     ?>
 

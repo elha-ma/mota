@@ -101,11 +101,11 @@ function filtre_photos() {
     $args = array(
         'post_type' => 'photo',
         'order' => $tri,
-        'posts_per_page' => 4,
+        'posts_per_page' => 6,
         'paged' => $num_page,
         'tax_query' => $tax_query,
     );
-    //var_dump($args); 
+    //var_dump("malika paged: ",$num_page); 
     $response .= require_once( locate_template( 'templates_part/photo_block.php' ) );
     exit;
 }

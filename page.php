@@ -41,7 +41,7 @@ wp_reset_postdata();
 //Affichage de toutes les photos
 $args = array(
 	'post_type' => 'photo', 
-	'posts_per_page' => 4,
+	'posts_per_page' => 6,
 	'paged' => 1,
 ); ?>
 
@@ -52,8 +52,7 @@ require_once( locate_template( 'templates_part/photo_block.php' ) );?>
 </div>
 
 <!--bouton pour charger plus de photos -->
-<div id="btn-load-more">
-  
+<div id="btn-load-more">  
   <input type="button" value="Charger plus" id="load-more" />
 </div>
 
