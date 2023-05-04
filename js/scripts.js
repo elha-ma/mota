@@ -93,6 +93,9 @@ function charger_photos_page(){
                     action: 'filtre_photos',               
                 },
                 success: function (response) {   
+                    $('#max-pages').remove();
+                    $('#msg-photo').remove();
+                    $('.suite-photos').append(response);    
                     //Quand on arrive à la fin des posts, on cache le bouton charger plus
                     var maxpages = $('input[name="max-pages"]').val();
                     //console.log("maxpages : ", maxpages);
@@ -105,7 +108,7 @@ function charger_photos_page(){
                     if( currentPage >= maxpages) {
                         $('#load-more').hide();
                     }                                   
-                    $('.suite-photos').append(response);       
+                       
                 },
         
             });
@@ -137,15 +140,16 @@ function filtrer_photos(){
                     $('.display-photo').remove();
                     $('#max-pages').remove();
                     $('#msg-photo').remove();
-                                     
+                    $('.suite-photos').append(response);              
                     var maxpages = $('input[name="max-pages"]').val();
+                    console.log("nounou: ", maxpages );
                    
                     if (maxpages <= 1) {
                         $('#load-more').hide();
                     } else {
                         $('#load-more').show();
                     }             
-                    $('.suite-photos').append(response);                   
+                                    
                             
                 },
                
