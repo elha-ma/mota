@@ -39,13 +39,18 @@ add_action('wp_footer', 'theme_scripts');
 //fonction pour la pagination 
 function action_load_more() {  
     $response = '';
+    $categorie = $_GET['categorie']; 
     $args = array(
         'post_type' => 'photo', 
-        'posts_per_page' => 2,
-      //  'paged' => $_GET['paged'],
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'categorie',
+                'terms' => $categorie,
+                'field' => 'slug',
+            )
+        ),
     );
 
-    //$response .= get_template_part('/templates_part/photo_block', 'photo');
    $response .= require_once( locate_template( 'templates_part/photo_block.php' ) );
 
    exit;

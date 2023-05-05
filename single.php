@@ -16,16 +16,23 @@ $my_query = new WP_Query( $args );
 
 // On a un seul résultat 
 if ($my_query->have_posts()) : $my_query->the_post();
+
+//identifiant et catégorie de la photo affichée
+$term_id = get_the_ID();
+$terms = get_the_terms( $term_id, 'categorie' );
+$term_categorie = $terms[0]->name;
+$term_categ_slug = $terms[0]->slug;
 ?>
 
 <!-- La partie photo et ses infos -->
-<div class="display-photo">
+<div class="photo-single">
 	<div class="half bloc-infos">
         <h1><?php the_title(); ?></h1>
         <div class="display-infos">
             <div class="marge">Type : <?php the_field( 'type_photo' ); ?></div>
             <div class="marge">Référence : <span id="reference-photo"><?php the_field( 'reference_photo' ); ?></span></div>
-            <div class="marge">Année : <?php the_field( 'annee_photo' ); ?></div>            
+            <div class="marge">Année : <?php the_field( 'annee_photo' ); ?></div> 
+            <div class="marge">Catégorie : <?php echo $term_categorie; ?></div>            
         </div>
         <hr/>
     </div>
@@ -38,10 +45,7 @@ if ($my_query->have_posts()) : $my_query->the_post();
 
 <?php
 
-//identifiant et catégorie de la photo affichée
-$term_id = get_the_ID();
-$terms = get_the_terms( $term_id, 'categorie' );
-$term_categorie = $terms[0]->name;
+
 
 endif;
 
@@ -56,12 +60,15 @@ wp_reset_postdata(); ?>
 	<div class="pos-vignette">         
         <?php 
         // Previous/next post navigation.
+        $next_post = get_next_post();
+        $previous_post = get_previous_post();
         the_post_navigation(
             array(
-                'next_text' => '<div>&#10230;</div>',
-                'prev_text' => '<div>&#10229;</div>',
+                'next_text' => '<div class="visiblenext">' . get_the_post_thumbnail($next_post->ID, [100,100]) . '</div><div class="flechenext"><b>&#10230;</b></div>',
+                'prev_text' => '<div class="visibleprev">' . get_the_post_thumbnail($previous_post->ID, [100,100]).'</div><div class="flecheprev"><b>&#10229;</b></div>',
             )
-        );  
+        );
+
         ?>
     </div>    
 </div>
@@ -81,7 +88,7 @@ wp_reset_postdata(); ?>
         'tax_query' => array(
             array(
                 'taxonomy' => 'categorie',
-                'terms' => $term_categorie,
+                'terms' => $term_categ_slug,
                 'field' => 'slug',
             )
         ),
@@ -90,15 +97,22 @@ wp_reset_postdata(); ?>
         'posts_per_page' => 2,
     );
    
-    //get_template_part( '/templates_part/photo_block'); 
-    require_once( locate_template( 'templates_part/photo_block.php' ) );    
+    
     
     ?>
-
-    <!--bouton pour charger plus de photos -->
-    <div id="btn-load-all">
-        <a href="#!" id="load-all">Toutes les photos</a>
+    <div class="suite-photos">
+        <?php 
+        //get_template_part( '/templates_part/photo_block' ); 
+        require_once( locate_template( 'templates_part/photo_block.php' ) );?>
     </div>
+
+    <?php if ($count != 0) { ?>
+        <!--bouton pour charger toutes les photos -->
+        <div id="btn-load-all">
+            <input type="button" value="toutes les photos" id="load-all" />
+            <input id="categ" name="categ" type="hidden" value="<?php echo $term_categ_slug; ?>">
+        </div>
+    <?php }; ?>
 </div>
 
 <?php get_footer(); ?>

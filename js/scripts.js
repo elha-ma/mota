@@ -13,10 +13,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     //Fonction AJAX pour charger les photos (load more)
+    charger_photos_single();
     charger_photos_page();  
 
     //Filtrer les photos en fonction de la catégorie et du format
     filtrer_photos();
+
+    //Affichage des vignettes dans la page single
+    afficher_vignette();
 })
 
 function gestion_popup(){
@@ -47,18 +51,22 @@ function gestion_popup(){
     }
 }
 
-function charger_photos(){
+function charger_photos_single(){
     jQuery(document).ready(function($){   
-        $('#load-all').on('click', function() {     
-            console.log(currentPage);                
+
+        $('#load-all').on('click', function() {   
+       
             $.ajax({
                 type: 'GET',
                 url: '/photos-mota/wp-admin/admin-ajax.php',
                 dataType: 'html',
-                data: {
-                action: 'action_load_more',
+                data: {                
+                    categorie: $('input[name="categ"]').val(),
+                    action: 'action_load_more',
                 },
-                success: function (response) {                               
+                success: function (response) {  
+                    $('.display-photo').remove();  
+                    $('#load-all').hide();                                              
                     $('.suite-photos').append(response);          
                 },        
             });
@@ -98,8 +106,7 @@ function charger_photos_page(){
                     $('.suite-photos').append(response);    
                     //Quand on arrive à la fin des posts, on cache le bouton charger plus
                     var maxpages = $('input[name="max-pages"]').val();
-                    //console.log("maxpages : ", maxpages);
-                    
+              
                     if (maxpages <= 1) {
                         $('#load-more').hide();
                     } else {
@@ -156,5 +163,24 @@ function filtrer_photos(){
             });
         });
         
+    });
+}
+
+function afficher_vignette(){
+    jQuery(document).ready(function($){ 
+        //Afficher la vignette      
+        $('.flechenext').on('mouseover', function() {
+            $('.visiblenext').css('visibility','visible');
+        });
+        $('.flecheprev').on('mouseover', function() {
+            $('.visibleprev').css('visibility','visible');
+        });
+        //Cacher la vignette
+        $('.flechenext').on('mouseout', function() {
+            $('.visiblenext').css('visibility','hidden');
+        });
+        $('.flecheprev').on('mouseout', function() {
+            $('.visibleprev').css('visibility','hidden');
+        });
     });
 }

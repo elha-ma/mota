@@ -192,6 +192,12 @@ input, textarea{
     margin: 2rem;
 }
 
+.photo-single{
+    display: flex;
+    flex-direction: row;
+    margin: 2rem;
+}
+
 .display-infos{
     display: flex;
     flex-direction: column;
@@ -273,4 +279,15 @@ select{
 
 #load-more{
     width: 100px;
+}
+
+/*Les vignettes sur la page single */
+.nav-links{
+    display: flex;
+    flex-direction: row;
+}
+
+.visiblenext, 
+.visibleprev{
+    visibility: hidden;
 }
