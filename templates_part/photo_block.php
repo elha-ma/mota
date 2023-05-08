@@ -20,7 +20,11 @@ if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->th
     if ($i == 0) { 
         ?>
             <div class="display-photo">
-                <div class="half">                   
+                <div class="half" id="<?php echo $id?>">   
+                                        
+                        <img src="<?php echo get_stylesheet_directory_uri() ?>/images/fullscreen.png" alt="fullscreen" class="display-fullscreen"/>
+                        <img src="<?php echo get_stylesheet_directory_uri() ?>/images/eye.png" alt="eye" class="display-eye"/>        
+                 
                     <a href="<?php echo get_post_permalink ($id);?>"><?php the_post_thumbnail('full', array('class' => 'display-img')); ?></a>
                 </div>
         <?php    
@@ -28,7 +32,11 @@ if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->th
     } 
     else { 
         $i = 0; ?>
-            <div class="half">
+            <div class="half" id="<?php echo $id?>">
+               
+                        <img src="<?php echo get_stylesheet_directory_uri() ?>/images/fullscreen.png" alt="fullscreen" class="display-fullscreen"/>
+                        <img src="<?php echo get_stylesheet_directory_uri() ?>/images/eye.png" alt="eye" class="display-eye"/> 
+   
                  <a href="<?php echo get_post_permalink ($id);?>"><?php the_post_thumbnail('full', array('class' => 'display-img')); ?></a>
             </div>
         </div>    

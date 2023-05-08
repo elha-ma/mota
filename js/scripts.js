@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     //Affichage des vignettes dans la page single
     afficher_vignette();
+
+    //Affichage des icônes oeil et plein écran
+    afficher_icones();
 })
 
 function gestion_popup(){
@@ -182,5 +185,32 @@ function afficher_vignette(){
         $('.flecheprev').on('mouseout', function() {
             $('.visibleprev').css('visibility','hidden');
         });
+    });
+}
+
+function afficher_icones(){
+    jQuery(document).ready(function($){   
+
+        $('.half').on('mouseover', function() {
+            //On récupère l'id du div séléctionné
+            var obj = $(this);
+            var id = obj.attr("id");               
+            if (id != 'undefined'){
+                //On affiche les icones 
+                $('#' + id).find('.display-eye').css('display','block');
+                $('#' + id).find('.display-fullscreen').css('display','block');
+            }              
+        });
+
+        $('.half').on('mouseout', function() {
+            var obj = $(this);
+            var id = obj.attr("id");                 
+            if (id != 'undefined'){
+                //On cache les icones
+                $('#' + id).find('.display-eye').css('display','none');
+                $('#' + id).find('.display-fullscreen').css('display','none');
+            }              
+        });
+
     });
 }

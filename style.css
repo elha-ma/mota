@@ -291,3 +291,24 @@ select{
 .visibleprev{
     visibility: hidden;
 }
+
+/*Style de la lightbox */
+.lightbox__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0 50px;
+  }
+
+  /*Affichage des icônes eye et plein écran */
+  .display-eye {   
+    position: absolute;
+    display: none;
+
+  }
+
+  .display-fullscreen {
+    position: absolute;
+    display: none;
+  }
