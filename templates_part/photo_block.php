@@ -20,32 +20,32 @@ if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->th
     if ($i == 0) { 
         ?>
             <div class="display-photo">
-                <div class="half" id="<?php echo $id?>">                                           
-                    <span class="btnlightbox">
-            
-                            <img src="<?php echo get_stylesheet_directory_uri() ?>/images/fullscreen.png" alt="fullscreen" class="display-fullscreen"/>
-                    
+                <div class="half" id="<?php echo $id?>">  
+                    <div class="img-gradient">   
+                        <?php the_post_thumbnail('full', array('class' => 'display-img')); ?> 
+                    </div>                                         
+                    <span class="btnlightbox">            
+                        <img src="<?php echo get_stylesheet_directory_uri() ?>/images/fullscreen.png" alt="fullscreen" class="display-fullscreen"/>                    
                     </span>
                     <a href="<?php echo get_post_permalink ($id);?>">
                         <img src="<?php echo get_stylesheet_directory_uri() ?>/images/eye.png" alt="eye" class="display-eye"/>
-                    </a>
-                    <?php the_post_thumbnail('full', array('class' => 'display-img')); ?>
+                    </a>                             
                 </div>
         <?php    
         $i++; 
     } 
     else { 
         $i = 0; ?>
-            <div class="half" id="<?php echo $id?>">               
-                <span class="btnlightbox">
-              
-                        <img src="<?php echo get_stylesheet_directory_uri() ?>/images/fullscreen.png" alt="fullscreen" class="display-fullscreen"/>
-          
+            <div class="half" id="<?php echo $id?>">  
+                <div class="img-gradient">   
+                    <?php the_post_thumbnail('full', array('class' => 'display-img')); ?> 
+                </div>             
+                <span class="btnlightbox">              
+                    <img src="<?php echo get_stylesheet_directory_uri() ?>/images/fullscreen.png" alt="fullscreen" class="display-fullscreen"/>          
                 </span>
                 <a href="<?php echo get_post_permalink ($id);?>">
                     <img src="<?php echo get_stylesheet_directory_uri() ?>/images/eye.png" alt="eye" class="display-eye"/> 
                 </a>
-                <?php the_post_thumbnail('full', array('class' => 'display-img')); ?>
             </div>
         </div>    
     <?php

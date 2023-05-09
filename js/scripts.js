@@ -228,36 +228,54 @@ function afficher_icones(){
     });
 }
 
-function gestion_lightbox(){
-    
-    //btnlightbox.onclick = function() {   
-    jQuery(document).ready(function($){   
+function gestion_lightbox(){    
+    jQuery(document).ready(function($){  
+
         // Ouverture de la lightbox
         $('.btnlightbox').on('click', function() { 
+            $.ajax({
+                type: 'GET',
+                url: '/photos-mota/wp-admin/admin-ajax.php',
+                dataType: 'html',
+                data: {                
+                    identifiant: $(this).parent().attr("id"),
+                    action: 'action_lightbox',
+                },
+                success: function (response) {               
+                    // construction de la lightbox
+                    $('.box').append(response);  
+                    // fermeture de la lightbox 
+                    $('.lightbox_close').on('click', function() {                 
+                        $('#light_box').remove();
+                    });
+                    $('.lightbox_prev').on('click', function() {                 
+                        next_image(identifiant);
+                    });
+                },        
+            });    
+        }); 
+    });   
+}
+
+function next_image($id){
+    jQuery(document).ready(function($){  
+        $('.lightbox_container').remove();
         $.ajax({
             type: 'GET',
             url: '/photos-mota/wp-admin/admin-ajax.php',
             dataType: 'html',
             data: {                
-                identifiant: $(this).parent().attr("id"),
-                action: 'action_lightbox',
+                identifiant: $id,
+                action: 'prev_next_lightbox',
             },
-            success: function (response) {                  
-  
-                $('.box').append(response);   
-                $('.lightbox_close').on('click', function() { 
-  
-            
-                      $('#light_box').remove();
-                   });                 
+            success: function (rep) {               
+                // construction de la lightbox
+                $('lightbox_container').remove();
+                
+                $('.box').append(rep);  
+          
             },        
-        });    
-    });  
-
-
- 
-
+        });
+        
     });
-
-   
 }

@@ -126,3 +126,14 @@ function action_lightbox(){
 }
 add_action('wp_ajax_action_lightbox', 'action_lightbox');
 add_action('wp_ajax_nopriv_action_lightbox', 'action_lightbox');
+
+function prev_next_lightbox(){
+    $response = '';
+    $id = $_GET['identifiant']; 
+    $response .= "<div class='lightbox_container'>
+                    <?php echo get_the_post_thumbnail($id , 'large'); ?>
+                </div>";
+    exit;
+}
+add_action('wp_ajax_prev_next_lightbox', 'prev_next_lightbox');
+add_action('wp_ajax_nopriv_prev_next_lightbox', 'prev_next_lightbox');

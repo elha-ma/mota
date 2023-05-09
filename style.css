@@ -205,7 +205,10 @@ input, textarea{
 
 .half{
     position:relative;
-    width: 50%;   
+    width: 50%;  
+    display: inline-block;
+
+   
 }
 
 h1{
@@ -241,9 +244,24 @@ h1{
 .display-img{
     object-fit: cover;
     height: 80vh;
-    width: 46vw;  
+    width: 46vw;     
 }
 
+/*Pour afficher un transparent graduel sur l'image*/
+.img-gradient{
+    position:relative;
+    display: inline-block;
+}
+
+.img-gradient:hover::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,0), black);
+}
 
 /*format de la photo du herpo header */
 .hero-header{
@@ -338,8 +356,31 @@ select{
 }
 
 .lightbox_close:hover,
-.lightbox_close:focus {
+.lightbox_close:focus,
+.lightbox_next:hover,
+.lightbox_next:focus,
+.lightbox_prev:hover,
+.lightbox_prev:focus{
     color: white;
     text-decoration: none;
     cursor: pointer;
+}
+
+.lightbox_next {
+    color: white;
+    float: right;
+    font-weight: bold;
+    margin-right: 3rem;
+    margin-bottom: 2rem;
+}
+.lightbox_prev {
+    color: white;
+    float: right;
+    font-weight: bold;
+    margin-right: 3rem;
+    margin-bottom: 2rem;
+}
+
+.fleche{
+    color: white;
 }
