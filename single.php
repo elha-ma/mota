@@ -110,7 +110,7 @@ wp_reset_postdata(); ?>
         <!--bouton pour charger toutes les photos -->
         <div id="btn-load-all">
             <input type="button" value="toutes les photos" id="load-all" />
-            <input id="categ" name="categ" type="hidden" value="<?php echo $term_categ_slug; ?>">
+            <input id="categ" name="categ" type="hidden" value="<?php echo $term_categ_slug; ?>"/>
         </div>
     <?php }; ?>
 </div>

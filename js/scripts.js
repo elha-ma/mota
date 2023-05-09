@@ -248,8 +248,11 @@ function gestion_lightbox(){
                     $('.lightbox_close').on('click', function() {                 
                         $('#light_box').remove();
                     });
-                    $('.lightbox_prev').on('click', function() {                 
-                        next_image(identifiant);
+                    $('.lightbox_next').on('click', function() {       
+                        display_photo($('input[name="next_id"]').val());
+                    });
+                    $('.lightbox_prev').on('click', function() {         
+                        display_photo($('input[name="prev_id"]').val());
                     });
                 },        
             });    
@@ -257,9 +260,9 @@ function gestion_lightbox(){
     });   
 }
 
-function next_image($id){
+function display_photo($id){
     jQuery(document).ready(function($){  
-        $('.lightbox_container').remove();
+        $('.lightbox_principal').remove();
         $.ajax({
             type: 'GET',
             url: '/photos-mota/wp-admin/admin-ajax.php',
@@ -270,12 +273,11 @@ function next_image($id){
             },
             success: function (rep) {               
                 // construction de la lightbox
-                $('lightbox_container').remove();
-                
-                $('.box').append(rep);  
-          
+                console.log(rep);
+                $('#principal').append(rep);          
             },        
         });
         
     });
 }
+
