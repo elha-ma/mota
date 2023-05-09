@@ -24,6 +24,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     //Affichage des icônes oeil et plein écran
     afficher_icones();
+
+    //Gestion de la lightbox
+    gestion_lightbox();
 })
 
 function gestion_popup(){
@@ -70,7 +73,10 @@ function charger_photos_single(){
                 success: function (response) {  
                     $('.display-photo').remove();  
                     $('#load-all').hide();                                              
-                    $('.suite-photos').append(response);          
+                    $('.suite-photos').append(response);
+                    //charger les events pour gérer la lightbox et afficher les icones eye et fullscreen
+                    gestion_lightbox();
+                    afficher_icones();          
                 },        
             });
         });
@@ -106,7 +112,10 @@ function charger_photos_page(){
                 success: function (response) {   
                     $('#max-pages').remove();
                     $('#msg-photo').remove();
-                    $('.suite-photos').append(response);    
+                    $('.suite-photos').append(response);   
+                    //charger les events pour gérer la lightbox et afficher les icones eye et fullscreen
+                    gestion_lightbox();
+                    afficher_icones();   
                     //Quand on arrive à la fin des posts, on cache le bouton charger plus
                     var maxpages = $('input[name="max-pages"]').val();
               
@@ -150,7 +159,10 @@ function filtrer_photos(){
                     $('.display-photo').remove();
                     $('#max-pages').remove();
                     $('#msg-photo').remove();
-                    $('.suite-photos').append(response);              
+                    $('.suite-photos').append(response);        
+                    //charger les events pour gérer la lightbox et afficher les icones eye et fullscreen
+                    gestion_lightbox();
+                    afficher_icones();        
                     var maxpages = $('input[name="max-pages"]').val();
                     console.log("nounou: ", maxpages );
                    
@@ -194,7 +206,8 @@ function afficher_icones(){
         $('.half').on('mouseover', function() {
             //On récupère l'id du div séléctionné
             var obj = $(this);
-            var id = obj.attr("id");               
+            var id = obj.attr("id");  
+            console.log("mouseover : ", id);             
             if (id != 'undefined'){
                 //On affiche les icones 
                 $('#' + id).find('.display-eye').css('display','block');
@@ -213,4 +226,38 @@ function afficher_icones(){
         });
 
     });
+}
+
+function gestion_lightbox(){
+    
+    //btnlightbox.onclick = function() {   
+    jQuery(document).ready(function($){   
+        // Ouverture de la lightbox
+        $('.btnlightbox').on('click', function() { 
+        $.ajax({
+            type: 'GET',
+            url: '/photos-mota/wp-admin/admin-ajax.php',
+            dataType: 'html',
+            data: {                
+                identifiant: $(this).parent().attr("id"),
+                action: 'action_lightbox',
+            },
+            success: function (response) {                  
+  
+                $('.box').append(response);   
+                $('.lightbox_close').on('click', function() { 
+  
+            
+                      $('#light_box').remove();
+                   });                 
+            },        
+        });    
+    });  
+
+
+ 
+
+    });
+
+   
 }

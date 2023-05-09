@@ -116,3 +116,13 @@ function filtre_photos() {
 }
 add_action('wp_ajax_filtre_photos', 'filtre_photos');
 add_action('wp_ajax_nopriv_filtre_photos', 'filtre_photos');
+
+//fonction pour charger la lightbox
+function action_lightbox(){    
+    $response = '';
+    $identifiant = $_GET['identifiant']; 
+    $response .= require_once( locate_template( 'templates_part/lightbox.php' ) );
+    exit;
+}
+add_action('wp_ajax_action_lightbox', 'action_lightbox');
+add_action('wp_ajax_nopriv_action_lightbox', 'action_lightbox');

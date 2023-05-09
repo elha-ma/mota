@@ -204,7 +204,8 @@ input, textarea{
 }
 
 .half{
-    width: 50%;
+    position:relative;
+    width: 50%;   
 }
 
 h1{
@@ -240,8 +241,9 @@ h1{
 .display-img{
     object-fit: cover;
     height: 80vh;
-    width: 46vw;
+    width: 46vw;  
 }
+
 
 /*format de la photo du herpo header */
 .hero-header{
@@ -292,23 +294,52 @@ select{
     visibility: hidden;
 }
 
+/*Affichage des icônes eye et plein écran */
+.display-eye {   
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+}
+
+.display-fullscreen {
+    position: absolute;
+    display: none;
+    left: 90%;
+    top: 2%;
+}
+
 /*Style de la lightbox */
-.lightbox__container {
+.lightbox {
+   /* display: none; */
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.8);
+}
+
+.lightbox_container {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    margin: 0 50px;
-  }
+}
 
-  /*Affichage des icônes eye et plein écran */
-  .display-eye {   
-    position: absolute;
-    display: none;
+.lightbox_close {
+    color: white;
+    float: right;
+    font-weight: bold;
+    margin-top : 5rem;
+    margin-right: 3rem;
+}
 
-  }
-
-  .display-fullscreen {
-    position: absolute;
-    display: none;
-  }
+.lightbox_close:hover,
+.lightbox_close:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}

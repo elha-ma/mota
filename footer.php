@@ -1,6 +1,9 @@
 
-    <!--Intégration de la fenêtre modale -->
+    <!--Intégration de la fenêtre modale Contact-->
     <?php get_template_part( '/templates_part/modale' ); ?>
+
+    <!--Intégration de la Lightbox-->
+    <div class="box"></div>
 
     <footer>
         <hr/>
