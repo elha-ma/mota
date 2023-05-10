@@ -164,7 +164,6 @@ function filtrer_photos(){
                     gestion_lightbox();
                     afficher_icones();        
                     var maxpages = $('input[name="max-pages"]').val();
-                    console.log("nounou: ", maxpages );
                    
                     if (maxpages <= 1) {
                         $('#load-more').hide();
@@ -241,9 +240,11 @@ function gestion_lightbox(){
                     identifiant: $(this).parent().attr("id"),
                     action: 'action_lightbox',
                 },
-                success: function (response) {               
+                success: function (response) {                                
                     // construction de la lightbox
                     $('.box').append(response);  
+                    // Gestion d'affichage des fleches sur la lightbox
+                    display_fleches();   
                     // fermeture de la lightbox 
                     $('.lightbox_close').on('click', function() {                 
                         $('#light_box').remove();
@@ -271,13 +272,36 @@ function display_photo($id){
                 identifiant: $id,
                 action: 'prev_next_lightbox',
             },
-            success: function (rep) {               
-                // construction de la lightbox
-                console.log(rep);
-                $('#principal').append(rep);          
+            success: function (rep) {                
+                // Construction de la lightbox              
+                $('#principal').append(rep);  
+                // Affichage des flèches suivant et précédent
+                display_fleches();   
             },        
         });
         
     });
 }
 
+function display_fleches(){
+    jQuery(document).ready(function($){  
+        
+        var iden_next = $('input[name="next_id"]').val();
+        var iden_prev = $('input[name="prev_id"]').val();
+        console.log("eeeeeeeeee; ", iden_next);   
+        console.log("eeeeeeeeee; ", iden_prev);      
+
+        if (typeof(iden_next) === "undefined"){
+            $('.fleche_next').css('display','none');
+        }
+        else {
+            $('.fleche_next').css('display','block');
+        }
+        if (typeof(iden_prev) === "undefined"){
+            $('.fleche_prev').css('display','none');
+        }
+        else{
+            $('.fleche_prev').css('display','block');
+        }
+    });
+}

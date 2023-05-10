@@ -372,7 +372,7 @@ select{
     color: white;
     text-align: center;
     font-weight: bold;
-    font-size: large;
+    font-size:xx-large;
     width: 10%;
 }
 
@@ -385,3 +385,4 @@ select{
     display: flex;
     justify-content: center;
 }
+

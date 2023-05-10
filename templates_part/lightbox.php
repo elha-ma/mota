@@ -23,11 +23,9 @@
     <div class="lightbox_close"> X </div>
 
     <div class="lightbox_container">
-        <?php   
-        if (isset($prev_id)){
-            echo "<div class='lightbox_prev'> précédent </div>";        
-        }  
-        ?>
+        <div class='lightbox_prev'>
+            <span class='fleche_prev'> < </span>
+        </div>
         <div id="principal">
             <div class="lightbox_principal">
                 <?php 
@@ -43,12 +41,8 @@
                 ?>
             </div>    
         </div>
-    
-        <?php   
-        if (isset($next_id)){
-            echo "<div class='lightbox_next'> suivant </div>";        
-        }  
-        ?>
-
+        <div class='lightbox_next'>
+            <span class='fleche_next'> > </span> 
+        </div>
     </div>
 </div>
