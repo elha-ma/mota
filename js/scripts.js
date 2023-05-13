@@ -1,4 +1,3 @@
-
 //DOMContentLoaded permet de s'assurer qu'on a bien chargé notre DOM avant d'éxécuter les scripts
 document.addEventListener('DOMContentLoaded', (event) => {
     //déclaration d'une variable globale pour la gestion des filtres et tri
@@ -27,6 +26,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     //Gestion de la lightbox
     gestion_lightbox();
+
+    //Animation du menu burger
+    animation_menu_burger();
 })
 
 function gestion_popup(){
@@ -304,4 +306,40 @@ function display_fleches(){
             $('.fleche_prev').css('display','block');
         }
     });
+}
+
+function animation_menu_burger(){
+
+    //affichage, ouverture et fermeture du menu 
+    var sidenav = document.getElementById("mySidenav");
+    var openBtn = document.getElementById("openBtn");
+    var closeBtn = document.getElementById("closeBtn");
+
+    openBtn.onclick = openNav;
+    closeBtn.onclick = closeNav;
+
+    //fermeture du menu quand on clique sur un des liens
+    var affiche_story = document.getElementById("lien-story");
+    var affiche_perso = document.getElementById("lien-perso");
+    var affiche_lieu = document.getElementById("lien-lieu");
+    var affiche_studio = document.getElementById("lien-studio");
+
+    affiche_story.onclick = closeNav;
+    affiche_perso.onclick = closeNav;
+    affiche_lieu.onclick = closeNav;
+    affiche_studio.onclick = closeNav;
+
+    //ouvrir le menu
+    function openNav() {
+      sidenav.classList.add("active");
+      openBtn.classList.add("invisible");
+      closeBtn.classList.remove("invisible");
+    }
+
+    //fermer le menu
+    function closeNav() {
+      sidenav.classList.remove("active");
+      openBtn.classList.remove("invisible");
+      closeBtn.classList.add("invisible");
+    }
 }

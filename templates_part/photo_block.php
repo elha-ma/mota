@@ -16,39 +16,57 @@ $i = 0;
 if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->the_post();
 
     $id = get_the_ID();
-
-    if ($i == 0) { 
+    //Affichage version mobile
+    if (wp_is_mobile()){
         ?>
-            <div class="display-photo">
+        <div class="display-photo" id="<?php echo $id?>">  
+            <div class="img-gradient">   
+                <?php the_post_thumbnail('full', array('class' => 'display-img')); ?> 
+            </div>                                         
+            <span class="btnlightbox">            
+                <img src="<?php echo get_stylesheet_directory_uri() ?>/images/fullscreen.png" alt="fullscreen" class="display-fullscreen"/>                    
+            </span>
+            <a href="<?php echo get_post_permalink ($id);?>">
+                <img src="<?php echo get_stylesheet_directory_uri() ?>/images/eye.png" alt="eye" class="display-eye"/>
+            </a>                             
+        </div>
+
+    <?php   
+    }else {
+        //Affichage version desktop
+        if ($i == 0) { 
+            ?>
+                <div class="display-photo">
+                    <div class="half" id="<?php echo $id?>">  
+                        <div class="img-gradient">   
+                            <?php the_post_thumbnail('full', array('class' => 'display-img')); ?> 
+                        </div>                                         
+                        <span class="btnlightbox">            
+                            <img src="<?php echo get_stylesheet_directory_uri() ?>/images/fullscreen.png" alt="fullscreen" class="display-fullscreen"/>                    
+                        </span>
+                        <a href="<?php echo get_post_permalink ($id);?>">
+                            <img src="<?php echo get_stylesheet_directory_uri() ?>/images/eye.png" alt="eye" class="display-eye"/>
+                        </a>                             
+                    </div>
+            <?php    
+            $i++; 
+        } 
+        else { 
+            $i = 0; ?>
                 <div class="half" id="<?php echo $id?>">  
                     <div class="img-gradient">   
                         <?php the_post_thumbnail('full', array('class' => 'display-img')); ?> 
-                    </div>                                         
-                    <span class="btnlightbox">            
-                        <img src="<?php echo get_stylesheet_directory_uri() ?>/images/fullscreen.png" alt="fullscreen" class="display-fullscreen"/>                    
+                    </div>             
+                    <span class="btnlightbox">              
+                        <img src="<?php echo get_stylesheet_directory_uri() ?>/images/fullscreen.png" alt="fullscreen" class="display-fullscreen"/>          
                     </span>
                     <a href="<?php echo get_post_permalink ($id);?>">
-                        <img src="<?php echo get_stylesheet_directory_uri() ?>/images/eye.png" alt="eye" class="display-eye"/>
-                    </a>                             
+                        <img src="<?php echo get_stylesheet_directory_uri() ?>/images/eye.png" alt="eye" class="display-eye"/> 
+                    </a>
                 </div>
-        <?php    
-        $i++; 
-    } 
-    else { 
-        $i = 0; ?>
-            <div class="half" id="<?php echo $id?>">  
-                <div class="img-gradient">   
-                    <?php the_post_thumbnail('full', array('class' => 'display-img')); ?> 
-                </div>             
-                <span class="btnlightbox">              
-                    <img src="<?php echo get_stylesheet_directory_uri() ?>/images/fullscreen.png" alt="fullscreen" class="display-fullscreen"/>          
-                </span>
-                <a href="<?php echo get_post_permalink ($id);?>">
-                    <img src="<?php echo get_stylesheet_directory_uri() ?>/images/eye.png" alt="eye" class="display-eye"/> 
-                </a>
-            </div>
-        </div>    
-    <?php
+            </div>    
+        <?php
+        }
     }
 
 endwhile;

@@ -33,21 +33,14 @@ a{
     margin: 0 4rem;
 }
 @media screen and (max-width: 768px) {
-   .header{      
-      flex-direction: column;   
-      align-items: center; 
-   }   
-}
-
+    .header{      
+       margin: 1rem;
+    }   
+ }
 /* Permet de positionner les liens de l'entête vers la droite */
 .pos-right {
     display: flex;
     margin-left: auto;	
- }
- @media screen and (max-width: 768px) {
-    .pos-right{      
-       margin-left: 0;
-    }   
  }
 
  /* positionnement du logo */
@@ -99,6 +92,89 @@ header li{
  .center{
     text-align: center;
  }
+
+ /* Le menu de l'entête version mobile */
+ .m-burger{
+    display:flex;
+    align-items: center;
+}
+
+.burger-icon span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: black;
+    margin: 6px 0;
+}
+
+.close:hover{
+    color:black;
+}
+
+.invisible{
+    visibility: hidden;
+}
+
+.sidenav {
+    top: -15rem;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    background-color: #E00000;
+}
+  
+.sidenav ul {
+    list-style-type: none;
+    display:flex;
+    flex-direction: column;
+}
+  
+.sidenav a {
+    text-decoration: none;
+    color: white;
+}
+  
+.sidenav a:hover {
+    color: #111;
+}
+  
+#openBtn{
+    margin: 1rem;
+}
+
+/*fade-in du menu burger */
+.sidenav.active {
+    top: auto;
+    animation: menu_fadin 2s;  
+}
+@keyframes menu_fadin {
+from {
+    transform: translateY(-50%);
+    opacity: 0;
+}
+to {
+    transform: translateY(0%);
+    opacity: 1;
+}
+}
+  
+/*gestion de l'affichage des menus en fct du support */
+.menu-desktop{
+    display: block;
+}
+@media screen and (max-width: 768px) {
+    .menu-desktop{
+        display: none;
+    }
+}
+.menu-mobile{
+    display: none;
+}
+@media screen and (max-width: 768px) {
+    .menu-mobile{
+        display: block;
+    }
+}
 
  /* The Modal (background) */
 .modal {
@@ -206,9 +282,7 @@ input, textarea{
 .half{
     position:relative;
     width: 50%;  
-    display: inline-block;
-
-   
+    display: inline-block;   
 }
 
 h1{
@@ -245,6 +319,12 @@ h1{
     object-fit: cover;
     height: 80vh;
     width: 46vw;     
+}
+@media screen and (max-width: 768px) {
+    .display-img{
+        height: 50vh;
+        width: 90vw;     
+    }
 }
 
 /*Pour afficher un transparent graduel sur l'image*/
@@ -288,6 +368,12 @@ select{
     display: flex;
     flex-direction: row;
 }
+@media screen and (max-width: 768px) {
+    .display-tax{
+        flex-direction: column;
+    }
+}
+
 
 .space-right{
     margin-right: 2rem;
@@ -295,6 +381,11 @@ select{
 
 .pos-tri{
     margin-left: auto;
+}
+@media screen and (max-width: 768px) {
+    .pos-tri{
+        margin-left: 0;
+    }
 }
 
 #load-more{

@@ -28,7 +28,7 @@
                 <?php the_custom_logo();  ?>         				
 			</div> 
 
-			<div class='pos-right'>
+			<div class='pos-right menu-desktop'>
 				<?php wp_nav_menu( 
 				[
 					'menu' => 'menu-entete',
@@ -38,6 +38,28 @@
 				?>
 			</div>
 
+			<div class="pos-right menu-mobile">
+				<div class="m-burger">
+					<a href="#" id="openBtn">
+						<span class="burger-icon">
+							<span></span>
+							<span></span>
+							<span></span>
+						</span>
+					</a>
+					<a id="closeBtn" href="#" class="close invisible">X</a>
+				</div>
+
+				<div id="mySidenav" class="sidenav">                    
+					<?php wp_nav_menu( 
+					[
+						'menu' => 'menu-entete',
+						'container'=> '',
+						'items_wrap'=>'<ul>%3$s</ul>'				
+					]); 
+					?>
+				</div>
+			</div>  
 			
     	</header>
 		
