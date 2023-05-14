@@ -55,7 +55,7 @@ wp_reset_postdata(); ?>
 <!-- La partie contact et défiler les photos -->
 <div class="contact-single">
 	<div> 
-        Cette photo vous intéresse ?  <b>|</b> <span id="contact"><a href="#?ref=<?php the_field( 'reference_photo' ); ?>"> Contact </a></span>  
+        Cette photo vous intéresse ?  <b>|</b> <span id="contact" ><a href="#?ref=<?php the_field( 'reference_photo' ); ?>" class="s-button"> Contact </a></span>  
     </div>
 	<div class="pos-vignette">         
         <?php 
@@ -109,7 +109,7 @@ wp_reset_postdata(); ?>
     <?php if ($count != 0) { ?>
         <!--bouton pour charger toutes les photos -->
         <div id="btn-load-all">
-            <input type="button" value="toutes les photos" id="load-all" />
+            <input type="button" value="toutes les photos" id="load-all" class="s-button"/>            
             <input id="categ" name="categ" type="hidden" value="<?php echo $term_categ_slug; ?>"/>
         </div>
     <?php }; ?>

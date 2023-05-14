@@ -477,3 +477,26 @@ select{
     justify-content: center;
 }
 
+/*style du bouton charger plus */
+
+/*style des boutons contact, envoyer et toutes les photos */
+#btn-load-all{
+    display: flex;
+    justify-content: center;
+}
+
+.s-button {
+    width: 10rem;
+    font-family: 'Space Mono', monospace;       
+    background:  white;
+    text-align: center;
+    border-width: 0 0 0 5px;
+    background: linear-gradient(to left, white 50%, black 50%) right;
+    background-size: 200%;
+    transition: .5s ease-out;
+}
+
+.s-button:Hover {
+    color: white;
+    background-position: left;
+}
