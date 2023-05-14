@@ -47,7 +47,7 @@
 							<span></span>
 						</span>
 					</a>
-					<a id="closeBtn" href="#" class="close invisible">X</a>
+					<a id="closeBtn" href="#" class="close-menu invisible">X</a>
 				</div>
 
 				<div id="mySidenav" class="sidenav">                    

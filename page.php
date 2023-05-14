@@ -35,6 +35,7 @@ get_header();
 	?>
 </div>
 
+<div class="margin-main">
 <!--Partie Filtres: Par catégorie et par format -->
 <div>
 	<?php require_once( locate_template( 'templates_part/options_filtres.php' ) );?>
@@ -56,7 +57,9 @@ require_once( locate_template( 'templates_part/photo_block.php' ) );?>
 
 <!--bouton pour charger plus de photos -->
 <div id="btn-load-more">  
-  <input type="button" value="Charger plus" id="load-more" />
+  <input type="button" value="Charger plus" id="load-more" class="s-button-load"/>
+</div>
+
 </div>
 
 <?php get_footer(); ?>

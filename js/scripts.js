@@ -38,7 +38,6 @@ function gestion_popup(){
     // On récupère le bouton contact
     var btn = document.getElementById("menu-item-26");
     var btncontact = document.getElementById("contact");
-    //console.log(btncontact);
     
     // L'élément de fermeture de la modale
     var span = document.getElementsByClassName("close")[0];
@@ -317,17 +316,6 @@ function animation_menu_burger(){
 
     openBtn.onclick = openNav;
     closeBtn.onclick = closeNav;
-
-    //fermeture du menu quand on clique sur un des liens
-    var affiche_story = document.getElementById("lien-story");
-    var affiche_perso = document.getElementById("lien-perso");
-    var affiche_lieu = document.getElementById("lien-lieu");
-    var affiche_studio = document.getElementById("lien-studio");
-
-    affiche_story.onclick = closeNav;
-    affiche_perso.onclick = closeNav;
-    affiche_lieu.onclick = closeNav;
-    affiche_studio.onclick = closeNav;
 
     //ouvrir le menu
     function openNav() {

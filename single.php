@@ -1,7 +1,7 @@
+<?php get_header(); ?>
+
+<div class="margin-main">
 <?php
-
-get_header();
-
 //On récupère l'identifiant de la photo principale
 $id_photo = get_the_id();
 
@@ -55,7 +55,7 @@ wp_reset_postdata(); ?>
 <!-- La partie contact et défiler les photos -->
 <div class="contact-single">
 	<div> 
-        Cette photo vous intéresse ?  <b>|</b> <span id="contact" ><a href="#?ref=<?php the_field( 'reference_photo' ); ?>" class="s-button"> Contact </a></span>  
+        Cette photo vous intéresse ?  <span id="contact" ><a href="#?ref=<?php the_field( 'reference_photo' ); ?>" class="s-button"> Contact </a></span>  
     </div>
 	<div class="pos-vignette">         
         <?php 
@@ -114,6 +114,6 @@ wp_reset_postdata(); ?>
         </div>
     <?php }; ?>
 </div>
-
+</div>
 <?php get_footer(); ?>
 

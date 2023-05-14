@@ -26,6 +26,10 @@ a{
     color: black;
 }
 
+.margin-main{
+    margin: 1rem 1rem 3rem 1rem;
+}
+
 /* En-tete de la page */
 .header{
 	display: flex;
@@ -107,7 +111,7 @@ header li{
     margin: 6px 0;
 }
 
-.close:hover{
+.close-menu:hover{
     color:black;
 }
 
@@ -201,7 +205,7 @@ to {
 }
 
 /* la croix pour fermer la popup */
-.close {
+.close{
     color: black;
     float: right;
     font-weight: bold;
@@ -219,6 +223,7 @@ to {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin: 1rem;
 }
 
 /* Affichage du footer */
@@ -236,12 +241,17 @@ to {
     cursor: pointer;
 }
 
-input{
+input[type=text],
+input[type="email"]{
     height: 40px;
 }
 
 input, textarea{
     width:100%;
+}
+
+.wpcf7-spinner{
+    display: none;
 }
 
 /* En-tête de la modale */
@@ -388,10 +398,6 @@ select{
     }
 }
 
-#load-more{
-    width: 100px;
-}
-
 /*Les vignettes sur la page single */
 .nav-links{
     display: flex;
@@ -478,15 +484,31 @@ select{
 }
 
 /*style du bouton charger plus */
+.s-button-load{
+    font-family: 'Space Mono', monospace; 
+    text-align: center;   
+    border: none;
+    width: 200px;
+    height: 50px;
+}
+
+.s-button-load:hover{
+    background-image: url("./images/hover-load.png");
+    background-repeat:no-repeat;
+    background-size: cover;   
+}
+
 
 /*style des boutons contact, envoyer et toutes les photos */
-#btn-load-all{
+#btn-load-all,
+#btn-load-more{
     display: flex;
     justify-content: center;
 }
 
 .s-button {
-    width: 10rem;
+    width: 200px;
+    padding: 1rem;
     font-family: 'Space Mono', monospace;       
     background:  white;
     text-align: center;
