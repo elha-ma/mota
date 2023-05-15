@@ -274,14 +274,12 @@ input, textarea{
 /*Affichage de la page single */
 .display-photo{
     display: flex;
-    flex-direction: row;
-    justify-content: center;    
+    flex-direction: row;   
 }
 
 .photo-single{
     display: flex;
     flex-direction: row;
-    margin: 2rem;
 }
 
 .display-infos{
@@ -292,8 +290,17 @@ input, textarea{
 .half{
     position:relative;
     /*display: inline-block;  */ 
+    display: flex;    
+    width: 50%;
+}
+
+.half-single{
+    width: 50%;
+}
+
+.dispo-img{
     display: flex;
-    
+    justify-content: flex-end;
 }
 
 .m-right{
@@ -313,8 +320,8 @@ h1{
 }
 
 .image-single{
-    object-fit: cover;
-    height: 80vh;
+    object-fit: fill;
+    height: 90vh;
     width: 45vw;
 }
 

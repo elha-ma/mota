@@ -26,17 +26,17 @@ $term_categ_slug = $terms[0]->slug;
 
 <!-- La partie photo et ses infos -->
 <div class="photo-single">
-	<div class="half bloc-infos">
+	<div class="half-single bloc-infos">
         <h1><?php the_title(); ?></h1>
         <div class="display-infos">
-            <div class="marge">Type : <?php the_field( 'type_photo' ); ?></div>
-            <div class="marge">Référence : <span id="reference-photo"><?php the_field( 'reference_photo' ); ?></span></div>
-            <div class="marge">Année : <?php the_field( 'annee_photo' ); ?></div> 
-            <div class="marge">Catégorie : <?php echo $term_categorie; ?></div>            
+            <div class="marge"><b>Type :</b> <?php the_field( 'type_photo' ); ?></div>
+            <div class="marge"><b>Référence :</b> <span id="reference-photo"><?php the_field( 'reference_photo' ); ?></span></div>
+            <div class="marge"><b>Année :</b> <?php the_field( 'annee_photo' ); ?></div> 
+            <div class="marge"><b>Catégorie :</b> <?php echo $term_categorie; ?></div>            
         </div>
         <hr/>
     </div>
-	<div class="half">        
+	<div class="half-single dispo-img">        
         <?php the_post_thumbnail('full', array('class' => 'image-single')); ?>
     </div>
 </div>
