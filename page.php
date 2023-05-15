@@ -3,7 +3,7 @@
 get_header(); 
 ?>
 
-<div>
+<div class="div-hero">
 	<?php
 	//Paramètres pour afficher aléatoirement 1 seule image 
 	$args = array(

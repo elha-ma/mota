@@ -25,7 +25,7 @@ $term_categ_slug = $terms[0]->slug;
 ?>
 
 <!-- La partie photo et ses infos -->
-<div class="photo-single">
+<div class="photo-single">    
 	<div class="half-single bloc-infos">
         <h1><?php the_title(); ?></h1>
         <div class="display-infos">
