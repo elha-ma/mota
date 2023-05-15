@@ -37,7 +37,7 @@ if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->th
         if ($i == 0) { 
             ?>
                 <div class="display-photo">
-                    <div class="half" id="<?php echo $id?>">  
+                    <div class="half m-right" id="<?php echo $id?>">  
                         <div class="img-gradient">   
                             <?php the_post_thumbnail('full', array('class' => 'display-img')); ?> 
                         </div>                                         
@@ -53,7 +53,7 @@ if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->th
         } 
         else { 
             $i = 0; ?>
-                <div class="half" id="<?php echo $id?>">  
+                <div class="half m-left" id="<?php echo $id?>">  
                     <div class="img-gradient">   
                         <?php the_post_thumbnail('full', array('class' => 'display-img')); ?> 
                     </div>             

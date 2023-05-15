@@ -275,7 +275,7 @@ input, textarea{
 .display-photo{
     display: flex;
     flex-direction: row;
-    margin: 2rem;
+    justify-content: center;    
 }
 
 .photo-single{
@@ -291,8 +291,17 @@ input, textarea{
 
 .half{
     position:relative;
-    width: 50%;  
-    display: inline-block;   
+    /*display: inline-block;  */ 
+    display: flex;
+    
+}
+
+.m-right{
+    margin: 1rem 0.5rem 0.5rem 0;
+}
+
+.m-left{
+    margin: 1rem 0 0.5rem 0.5rem;
 }
 
 h1{
@@ -328,7 +337,8 @@ h1{
 .display-img{
     object-fit: cover;
     height: 80vh;
-    width: 46vw;     
+    width: 50vw;     
+    max-width: 100%;
 }
 @media screen and (max-width: 768px) {
     .display-img{
@@ -504,6 +514,7 @@ select{
 #btn-load-more{
     display: flex;
     justify-content: center;
+    margin: 1rem;
 }
 
 .s-button {
