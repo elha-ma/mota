@@ -36,7 +36,7 @@ a{
 	flex-direction: row;  
     margin: 0 4rem;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 576px) {
     .header{      
        margin: 1rem;
     }   
@@ -60,7 +60,7 @@ header ul, footer ul {
     flex-direction: row;    
     list-style: none;  
  }
- @media screen and (max-width: 768px) {
+ @media screen and (max-width: 576px) {
     footer ul{      
         flex-direction: column; 
         align-items:center; 
@@ -79,7 +79,7 @@ header li{
  footer li{
     padding: 0 1rem;
  }
- @media screen and (max-width: 768px) {
+ @media screen and (max-width: 576px) {
     footer li{      
        padding: 1rem;
  }
@@ -143,7 +143,7 @@ header li{
 #openBtn{
     margin: 1rem;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 576px) {
     #openBtn{      
        margin: 0;
  }
@@ -171,7 +171,7 @@ to {
 .menu-desktop{
     display: block;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 576px) {
     .menu-desktop{
         display: none;
     }
@@ -179,7 +179,7 @@ to {
 .menu-mobile{
     display: none;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 576px) {
     .menu-mobile{
         display: block;
     }
@@ -208,7 +208,7 @@ to {
     margin: 15% auto; /* 15% from the top and centered */
     width: 30%; 
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 576px) {
     .modal-content{
         width: 80%;
     }
@@ -291,7 +291,7 @@ input, textarea{
     display: flex;
     flex-direction: row;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 576px) {
     .photo-single{
         flex-direction: column-reverse;
     }
@@ -303,7 +303,7 @@ input, textarea{
 }
 
 .half{
-    position:relative;
+    position: relative;
     /*display: inline-block;  */ 
     display: flex;    
     width: 50%;
@@ -312,12 +312,15 @@ input, textarea{
 .half-single{
     width: 50%;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 576px) {
     .half-single{
         width: 100%;
     }
 }
 
+.dis-icone{
+    position:relative;
+}
 .dispo-img{
     display: flex;
     justify-content: flex-end;
@@ -334,7 +337,7 @@ input, textarea{
 h1{
     font-size: 4vw;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 576px) {
     h1{
        font-size: 10vw;
 }}
@@ -346,14 +349,22 @@ h1{
 .image-single{
     object-fit: fill;
     height: 90vh;
-    width: 45vw;
+    width: 40vw;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 576px) {
     .image-single{
         height: 60vh;
         width: 100vw;
     }
 }
+@media screen and (max-width: 1281px) {
+    .resp-light{
+        object-fit: cover;
+        height: 80vh;
+        width: 80vw;
+    }
+}
+
 
 .bloc-infos{
     margin-top: auto; 
@@ -365,7 +376,7 @@ h1{
     height: 118px;
     margin: 2rem;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 576px) {
     .contact-single{
         margin: 1rem 0 0 0;  
     }
@@ -374,7 +385,7 @@ h1{
 .pos-vignette{
     margin-left: auto;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 576px) {
     .pos-vignette{
         display: none;  
     }
@@ -387,7 +398,7 @@ h1{
     width: 50vw;     
     max-width: 100%;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 576px) {
     .display-img{
         height: 50vh;
         width: 90vw;     
@@ -421,7 +432,7 @@ h1{
     width: 100vw;
     max-width: 100%;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 576px) {
     .hero-header{
         height: 50vh;   
     }
@@ -446,7 +457,7 @@ select{
     flex-direction: row;
     margin-bottom: 1rem;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 576px) {
     .row-column{
         flex-direction: column;
         
@@ -458,7 +469,7 @@ select{
     margin-top: 0.8rem;
     padding-right: 1rem;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 576px) {
     .p-contact{
         margin-top: 0.8rem;        
     }
@@ -475,7 +486,7 @@ select{
 .pos-tri{
     margin-left: auto;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 576px) {
     .pos-tri{
         margin-left: 0;
     }
@@ -506,6 +517,11 @@ select{
     left: 90%;
     top: 2%;
 }
+@media screen and (max-width: 576px) {
+    .display-fullscreen{
+        left: 80%;
+    }
+}
 
 /*Style de la lightbox */
 .lightbox {
@@ -533,7 +549,12 @@ select{
     float: right;
     font-weight: bold;
     margin-top : 5rem;
-    margin-right: 3rem;
+    margin-right: 2rem;
+}
+@media screen and (max-width: 576px) {
+    .lightbox_close{
+        margin-right: 0.2rem;
+    }
 }
 
 .lightbox_close:hover,
@@ -565,6 +586,7 @@ select{
     display: flex;
     justify-content: center;
 }
+
 
 /*style du bouton charger plus */
 .s-button-load{

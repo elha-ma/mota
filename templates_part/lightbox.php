@@ -30,7 +30,7 @@
             <div class="lightbox_principal">
                 <?php 
                     //Affichage de la photo 
-                    echo get_the_post_thumbnail($identifiant , 'large'); 
+                    echo get_the_post_thumbnail($identifiant, 'large',  array('class' => 'resp-light'));                     
                     //On transmet les identifiants de la prev et next photo
                     if (isset($next_id)){
                         echo "<input id='next_id' name='next_id' type='hidden' value='$next_id' />";

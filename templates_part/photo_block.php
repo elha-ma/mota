@@ -19,7 +19,7 @@ if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->th
     //Affichage version mobile
     if (wp_is_mobile()){
         ?>
-        <div class="display-photo" id="<?php echo $id?>">  
+        <div class="display-photo dis-icone" id="<?php echo $id?>">  
             <div class="img-gradient">   
                 <?php the_post_thumbnail('full', array('class' => 'display-img')); ?> 
             </div>                                         
@@ -37,7 +37,7 @@ if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->th
         if ($i == 0) { 
             ?>
                 <div class="display-photo">
-                    <div class="half m-right" id="<?php echo $id?>">  
+                    <div class="half m-right dis-icone" id="<?php echo $id?>">  
                         <div class="img-gradient">   
                             <?php the_post_thumbnail('full', array('class' => 'display-img')); ?> 
                         </div>                                         
@@ -53,7 +53,7 @@ if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->th
         } 
         else { 
             $i = 0; ?>
-                <div class="half m-left" id="<?php echo $id?>">  
+                <div class="half m-left dis-icone" id="<?php echo $id?>">  
                     <div class="img-gradient">   
                         <?php the_post_thumbnail('full', array('class' => 'display-img')); ?> 
                     </div>             

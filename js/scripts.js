@@ -35,6 +35,9 @@ function gestion_popup(){
     // On récupère la div popup
     var modal = document.getElementById('myModal');
 
+    // On récupère le formulaire
+    var formulaire = document.getElementsByClassName("wpcf7-form")[0];
+
     // On récupère le bouton contact
     //var btn = document.getElementById("menu-item-26");
     var btn_desktop = document.getElementsByClassName("menu-item-26")[0];
@@ -60,6 +63,7 @@ function gestion_popup(){
     // Fermeture de la popup
     span.onclick = function() {
         modal.style.display = "none";
+        formulaire.reset(); 
     }
 }
 
@@ -208,7 +212,7 @@ function afficher_vignette(){
 function afficher_icones(){
     jQuery(document).ready(function($){   
 
-        $('.half').on('mouseover', function() {
+        $('.dis-icone').on('mouseover', function() {
             //On récupère l'id du div séléctionné
             var obj = $(this);
             var id = obj.attr("id");  
@@ -220,7 +224,7 @@ function afficher_icones(){
             }              
         });
 
-        $('.half').on('mouseout', function() {
+        $('.dis-icone').on('mouseout', function() {
             var obj = $(this);
             var id = obj.attr("id");                 
             if (id != 'undefined'){
