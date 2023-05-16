@@ -70,12 +70,7 @@ header ul, footer ul {
 header li{
      padding: 1rem;  
  }
- @media screen and (max-width: 768px) {
-    header li{      
-       padding: 0.5rem 1rem;
- }
- }
-
+ 
  footer ul{
     margin-top: 0;
     padding: 0;
@@ -132,6 +127,8 @@ header li{
     list-style-type: none;
     display:flex;
     flex-direction: column;
+    align-items: center;
+    padding: 0;
 }
   
 .sidenav a {
@@ -146,10 +143,17 @@ header li{
 #openBtn{
     margin: 1rem;
 }
+@media screen and (max-width: 768px) {
+    #openBtn{      
+       margin: 0;
+ }
+ }
 
 /*fade-in du menu burger */
 .sidenav.active {
     top: auto;
+    z-index: 2;
+    position: fixed;
     animation: menu_fadin 2s;  
 }
 @keyframes menu_fadin {
@@ -185,7 +189,7 @@ to {
 .modal {
     display: none; 
     position: fixed; 
-    z-index: 1; /* Sit on top */
+    z-index: 99; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; 
@@ -203,6 +207,11 @@ to {
     background-color: white;
     margin: 15% auto; /* 15% from the top and centered */
     width: 30%; 
+}
+@media screen and (max-width: 768px) {
+    .modal-content{
+        width: 80%;
+    }
 }
 
 /* la croix pour fermer la popup */
@@ -323,8 +332,12 @@ input, textarea{
 }
 
 h1{
-    font-size: 10vw;
+    font-size: 4vw;
 }
+@media screen and (max-width: 768px) {
+    h1{
+       font-size: 10vw;
+}}
 
 .marge{
     margin: 0.5rem;
@@ -351,6 +364,11 @@ h1{
     flex-direction: row;
     height: 118px;
     margin: 2rem;
+}
+@media screen and (max-width: 768px) {
+    .contact-single{
+        margin: 1rem 0 0 0;  
+    }
 }
 
 .pos-vignette{
@@ -423,21 +441,35 @@ select{
     width: 15rem;
 }
 
-.display-tax{
+.row-column{
     display: flex;
     flex-direction: row;
     margin-bottom: 1rem;
 }
 @media screen and (max-width: 768px) {
-    .display-tax{
+    .row-column{
         flex-direction: column;
         
     }
 }
 
+.p-contact{
+    margin-bottom: 1rem;
+    margin-top: 0.8rem;
+    padding-right: 1rem;
+}
+@media screen and (max-width: 768px) {
+    .p-contact{
+        margin-top: 0.8rem;        
+    }
+}
 
-.space-right{
+.space-r{
     margin-right: 2rem;
+}
+
+.space-b{
+    margin-bottom: 1rem;
 }
 
 .pos-tri{
@@ -559,7 +591,7 @@ select{
 }
 
 .s-button {
-    width: 200px;
+    width: 180px;
     padding: 1rem;
     font-family: 'Space Mono', monospace;       
     background:  white;
@@ -574,3 +606,8 @@ select{
     color: white;
     background-position: left;
 }
+.text-apropos{
+    font-size: 1rem;
+}
+
+

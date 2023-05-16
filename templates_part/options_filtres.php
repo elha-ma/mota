@@ -1,6 +1,6 @@
-<div class="display-tax">
+<div class="row-column">
     <!-- Affichage des noms de la taxonomie "catégorie"-->
-    <div class="space-right">
+    <div class="space-r space-b">
         <div>
             <label>CATEGORIES</label>
         </div>
@@ -24,7 +24,7 @@
     </div>
 
     <!-- Affichage des noms de la taxonomie "formats"-->
-    <div>
+    <div class="space-b">
         <div>
             <label>FORMATS</label>
         </div>
@@ -48,7 +48,7 @@
 
 
     <!-- Trier les photos-->
-    <div class="pos-tri">
+    <div class="pos-tri space-b">
         <div>
             <label>TRIER PAR</label>
         </div>

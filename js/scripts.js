@@ -36,14 +36,19 @@ function gestion_popup(){
     var modal = document.getElementById('myModal');
 
     // On récupère le bouton contact
-    var btn = document.getElementById("menu-item-26");
+    //var btn = document.getElementById("menu-item-26");
+    var btn_desktop = document.getElementsByClassName("menu-item-26")[0];
+    var btn_mobile = document.getElementsByClassName("menu-item-26")[1];
     var btncontact = document.getElementById("contact");
     
     // L'élément de fermeture de la modale
     var span = document.getElementsByClassName("close")[0];
 
     // Ouverture de la popup
-    btn.onclick = function() {
+    btn_desktop.onclick = function() {
+        modal.style.display = "block";
+    }
+    btn_mobile.onclick = function() {
         modal.style.display = "block";
     }
     if (btncontact !== null) {

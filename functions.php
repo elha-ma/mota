@@ -7,6 +7,7 @@ function mota_setup() {
     add_theme_support('title-tag');
     //les images vignettes (images vedette)
     add_theme_support( 'post-thumbnails' );
+    
   
     //Gestion des menus dans wordpress
     add_theme_support('menus');

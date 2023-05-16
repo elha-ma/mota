@@ -54,8 +54,13 @@ wp_reset_postdata(); ?>
 
 <!-- La partie contact et défiler les photos -->
 <div class="contact-single">
-	<div> 
-        Cette photo vous intéresse ?  <span id="contact" ><a href="#?ref=<?php the_field( 'reference_photo' ); ?>" class="s-button"> Contact </a></span>  
+	<div class="row-column"> 
+        <div class="p-contact">Cette photo vous intéresse ? </div>
+        <div><span id="contact" >
+            <a href="#?ref=<?php the_field( 'reference_photo' ); ?>" > 
+                <input type="button" value="Contact" class="s-button"/>  
+            </a>
+        </span></div>
     </div>
 	<div class="pos-vignette">         
         <?php 
