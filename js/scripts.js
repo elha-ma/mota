@@ -1,12 +1,12 @@
 //DOMContentLoaded permet de s'assurer qu'on a bien chargé notre DOM avant d'éxécuter les scripts
 document.addEventListener('DOMContentLoaded', (event) => {
-    //déclaration d'une variable globale pour la gestion des filtres et tri
+    //Déclaration d'une variable globale pour la gestion des filtres et le tri
     raz_numpage = false;
 
-    //Gestion de la popup
+    //Gestion de la popup contact
     gestion_popup();
 
-    //On récupère la référence photo dans le formulaire
+    //On récupère la référence photo dans le formulaire de contact
     jQuery(document).ready(function($){
         $(".refer").val($('#reference-photo').text());
     });
@@ -21,13 +21,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     //Affichage des vignettes dans la page single
     afficher_vignette();
 
-    //Affichage des icônes oeil et plein écran
+    //Affichage des icônes oeil et plein écran sur chaque photo
     afficher_icones();
 
     //Gestion de la lightbox
     gestion_lightbox();
 
-    //Animation du menu burger
+    //Animation du menu burger (version mobile)
     animation_menu_burger();
 })
 
@@ -38,8 +38,7 @@ function gestion_popup(){
     // On récupère le formulaire
     var formulaire = document.getElementsByClassName("wpcf7-form")[0];
 
-    // On récupère le bouton contact
-    //var btn = document.getElementById("menu-item-26");
+    // On récupère les boutons contact
     var btn_desktop = document.getElementsByClassName("menu-item-26")[0];
     var btn_mobile = document.getElementsByClassName("menu-item-26")[1];
     var btncontact = document.getElementById("contact");
@@ -69,9 +68,7 @@ function gestion_popup(){
 
 function charger_photos_single(){
     jQuery(document).ready(function($){   
-
-        $('#load-all').on('click', function() {   
-       
+        $('#load-all').on('click', function() {         
             $.ajax({
                 type: 'GET',
                 url: '/photos-mota/wp-admin/admin-ajax.php',
@@ -80,34 +77,33 @@ function charger_photos_single(){
                     categorie: $('input[name="categ"]').val(),
                     action: 'action_load_more',
                 },
-                success: function (response) {  
+                success: function (response) { 
+                    //on supprime ce qui est déjà affiché 
                     $('.display-photo').remove();  
-                    $('#load-all').hide();                                              
+                    //on cache le bouton load more
+                    $('#load-all').hide();        
+                    //on charge toutes les photos d'une catégorie donnée                                      
                     $('.suite-photos').append(response);
                     //charger les events pour gérer la lightbox et afficher les icones eye et fullscreen
                     gestion_lightbox();
                     afficher_icones();          
                 },        
             });
-        });
-        
+        });        
     });
 }
 
 function charger_photos_page(){
-    jQuery(document).ready(function($){   
-
-        let currentPage = 1;
-    
+    jQuery(document).ready(function($){  
+        let currentPage = 1;    
         $('#load-more').on('click', function() {
+            //gestion du nombre de pages
             if (raz_numpage){
                 currentPage = 2;
                 raz_numpage = false;
             } else{
                 currentPage++;  
-            }              
-                  
-            console.log(currentPage);                
+            }                     
             $.ajax({
                 type: 'GET',
                 url: '/photos-mota/wp-admin/admin-ajax.php',
@@ -127,8 +123,7 @@ function charger_photos_page(){
                     gestion_lightbox();
                     afficher_icones();   
                     //Quand on arrive à la fin des posts, on cache le bouton charger plus
-                    var maxpages = $('input[name="max-pages"]').val();
-              
+                    var maxpages = $('input[name="max-pages"]').val();              
                     if (maxpages <= 1) {
                         $('#load-more').hide();
                     } else {
@@ -136,20 +131,15 @@ function charger_photos_page(){
                     }    
                     if( currentPage >= maxpages) {
                         $('#load-more').hide();
-                    }                                   
-                       
-                },
-        
+                    }              
+                },        
             });
-        });
-        
+        });        
     });
 }
 
-
 function filtrer_photos(){
     jQuery(document).ready(function($){   
-
         $('.sel-option').on('change', function() {  
             raz_numpage = true;
             $.ajax({
@@ -161,10 +151,8 @@ function filtrer_photos(){
                 format: $('select[id="select-format"]').val() , 
                 tri: $('select[id="select-tri"]').val() , 
                 action: 'filtre_photos',
-                //paged: '1',
                 },
-                success: function (response) {     
-                    
+                success: function (response) {                      
                     //On supprime les photos affichés pour permettre l'affichage des photos suivant les nouvelles conditions 
                     $('.display-photo').remove();
                     $('#max-pages').remove();
@@ -173,33 +161,28 @@ function filtrer_photos(){
                     //charger les events pour gérer la lightbox et afficher les icones eye et fullscreen
                     gestion_lightbox();
                     afficher_icones();        
-                    var maxpages = $('input[name="max-pages"]').val();
-                   
+                    var maxpages = $('input[name="max-pages"]').val();                   
                     if (maxpages <= 1) {
                         $('#load-more').hide();
                     } else {
                         $('#load-more').show();
-                    }             
-                                    
-                            
-                },
-               
+                    }                           
+                },               
             });
-        });
-        
+        });        
     });
 }
 
 function afficher_vignette(){
     jQuery(document).ready(function($){ 
-        //Afficher la vignette      
+        //Afficher les vignettes (précédent et suivant)      
         $('.flechenext').on('mouseover', function() {
             $('.visiblenext').css('visibility','visible');
         });
         $('.flecheprev').on('mouseover', function() {
             $('.visibleprev').css('visibility','visible');
         });
-        //Cacher la vignette
+        //Cacher les vignettes
         $('.flechenext').on('mouseout', function() {
             $('.visiblenext').css('visibility','hidden');
         });
@@ -210,8 +193,7 @@ function afficher_vignette(){
 }
 
 function afficher_icones(){
-    jQuery(document).ready(function($){   
-
+    jQuery(document).ready(function($){  
         $('.dis-icone').on('mouseover', function() {
             //On récupère l'id du div séléctionné
             var obj = $(this);
@@ -233,13 +215,11 @@ function afficher_icones(){
                 $('#' + id).find('.display-fullscreen').css('display','none');
             }              
         });
-
     });
 }
 
 function gestion_lightbox(){    
-    jQuery(document).ready(function($){  
-
+    jQuery(document).ready(function($){
         // Ouverture de la lightbox
         $('.btnlightbox').on('click', function() { 
             $.ajax({
@@ -288,19 +268,15 @@ function display_photo($id){
                 // Affichage des flèches suivant et précédent
                 display_fleches();   
             },        
-        });
-        
+        });        
     });
 }
 
 function display_fleches(){
-    jQuery(document).ready(function($){  
-        
+    jQuery(document).ready(function($){         
         var iden_next = $('input[name="next_id"]').val();
         var iden_prev = $('input[name="prev_id"]').val();
-        console.log("eeeeeeeeee; ", iden_next);   
-        console.log("eeeeeeeeee; ", iden_prev);      
-
+        //gestion de l'affichage des flèches sur la lightbox
         if (typeof(iden_next) === "undefined"){
             $('.fleche_next').css('display','none');
         }

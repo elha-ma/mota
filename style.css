@@ -347,7 +347,8 @@ h1{
 }
 
 .image-single{
-    object-fit: fill;
+    /*object-fit: fill;*/
+    object-fit: cover;
     height: 90vh;
     width: 40vw;
 }
@@ -509,6 +510,11 @@ select{
     display: none;
     top: 50%;
     left: 50%;
+}
+@media screen and (max-width: 576px) {
+    .display-eye{
+        left: 45%;
+    }
 }
 
 .display-fullscreen {
