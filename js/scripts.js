@@ -197,8 +197,7 @@ function afficher_icones(){
         $('.dis-icone').on('mouseover', function() {
             //On récupère l'id du div séléctionné
             var obj = $(this);
-            var id = obj.attr("id");  
-            console.log("mouseover : ", id);             
+            var id = obj.attr("id");              
             if (id != 'undefined'){
                 //On affiche les icones 
                 $('#' + id).find('.display-eye').css('display','block');
@@ -239,7 +238,7 @@ function gestion_lightbox(){
                     $('.lightbox_close').on('click', function() {                 
                         $('#light_box').remove();
                     });
-                    $('.lightbox_next').on('click', function() {       
+                    $('.lightbox_next').on('click', function() {      
                         display_photo($('input[name="next_id"]').val());
                     });
                     $('.lightbox_prev').on('click', function() {         
