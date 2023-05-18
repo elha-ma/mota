@@ -1,9 +1,10 @@
 <?php 
-    //récupérer les posts précédent et suivant
+    //récupérer le post avec un identifiant précis
     $args = array(
         'post_type' => 'photo', // Nom du Custom Post Type
         'p' => $identifiant,
     );
+
     $my_query = new WP_Query( $args );
 
     if ($my_query->have_posts()) : 
@@ -11,21 +12,24 @@
     endif;
     wp_reset_postdata(); 
 
-    // Previous/next post navigation.
+    // on récupère les identifiants du post précédent et du post suivant
     $next_post = get_next_post();
     $next_id = $next_post->ID;
     $previous_post = get_previous_post();
     $prev_id = $previous_post->ID;
 ?>
 
-
+<!--la lightbox -->
 <div id ="light_box" class="lightbox">
+
     <div class="lightbox_close"> X </div>
 
     <div class="lightbox_container">
+
         <div class='lightbox_prev'>
             <span class='fleche_prev'> < </span>
         </div>
+
         <div id="principal">
             <div class="lightbox_principal">
                 <?php 
@@ -41,6 +45,7 @@
                 ?>
             </div>    
         </div>
+        
         <div class='lightbox_next'>
             <span class='fleche_next'> > </span> 
         </div>

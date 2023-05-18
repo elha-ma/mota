@@ -23,11 +23,11 @@
 		<?php wp_body_open(); ?>
 
 		<header class='header'>
-
+			<!-- afficher le logo -->
        		<div class='logo'>			         
                 <?php the_custom_logo();  ?>         				
 			</div> 
-
+			<!-- afficher le menu version desktop -->
 			<div class='pos-right menu-desktop'>
 				<?php wp_nav_menu( 
 				[
@@ -37,7 +37,7 @@
 				]); 
 				?>
 			</div>
-
+			<!-- afficher le menu version mobile -->
 			<div class="pos-right menu-mobile">
 				<div class="m-burger">
 					<a href="#" id="openBtn">

@@ -6,6 +6,7 @@ get_header();
 echo "<div class='marge'>";
 the_content();
 echo "</div>";
+
 //Pied de page
 get_footer();
 

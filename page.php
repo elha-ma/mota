@@ -15,8 +15,7 @@ get_header();
 	// On exécute la WP Query
 	$my_query = new WP_Query( $args );
 
-	//On parcourt les résultats de la WP_Query
-	if( $my_query->have_posts() ) : while( $my_query->have_posts() ) : $my_query->the_post();
+	if( $my_query->have_posts() ) : $my_query->the_post();
 
 		//Affichage de l'image du hero header
 		the_post_thumbnail('full', array('class' => 'hero-header')); 
@@ -26,39 +25,35 @@ get_header();
 		$img_atts = wp_get_attachment_image_src( $attachment_id, 'full');
 		$img_src = $img_atts[0];	
 	?>
-		<img src="<?php echo $img_src ?>" alt="image hero header" class="title-hero" />
-
-	<?php 
-	endwhile;
+	<img src="<?php echo $img_src ?>" alt="image hero header" class="title-hero" />
+	<?php 	
 	endif; 
 	wp_reset_postdata();
 	?>
 </div>
 
 <div class="margin-main">
-<!--Partie Filtres: Par catégorie et par format -->
-<div>
-	<?php require_once( locate_template( 'templates_part/options_filtres.php' ) );?>
-</div>
+	<!--Partie Filtres: Par catégorie et par format -->
+	<div>
+		<?php require_once( locate_template( 'templates_part/options_filtres.php' ) );?>
+	</div>
 
-<?php 
-//Affichage de toutes les photos
-$args = array(
-	'post_type' => 'photo', 
-	'posts_per_page' => 6,
-	'paged' => 1,
-); ?>
+	<?php 
+	//Affichage de toutes les photos
+	$args = array(
+		'post_type' => 'photo', 
+		'posts_per_page' => 6,
+		'paged' => 1,
+	); ?>
 
-<div class="suite-photos">
-<?php 
-//get_template_part( '/templates_part/photo_block' ); 
-require_once( locate_template( 'templates_part/photo_block.php' ) );?>
-</div>
+	<div class="suite-photos">
+		<?php require_once( locate_template( 'templates_part/photo_block.php' ) );?>
+	</div>
 
-<!--bouton pour charger plus de photos -->
-<div id="btn-load-more">  
-  <input type="button" value="Charger plus" id="load-more" class="s-button-load"/>
-</div>
+	<!--bouton pour charger plus de photos -->
+	<div id="btn-load-more">  
+	<input type="button" value="Charger plus" id="load-more" class="s-button-load"/>
+	</div>
 
 </div>
 

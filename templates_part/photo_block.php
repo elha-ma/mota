@@ -8,8 +8,7 @@ $count = count( $my_query->posts );
 
 //Nombre de pages que renvoi la requête
 $max_pages = $my_query->max_num_pages;
-//echo "nombre posts : ", $count;
-//echo "max pages  : ", $max_pages;
+
 // on parcoure les données
 $i = 0;
 
@@ -85,8 +84,9 @@ if ( $count == 0) {
 <input id="max-pages" name="max-pages" type="hidden" value="<?php echo $max_pages ?>">
 
 <?php 
-// on réinitialise à la requête principale 
-wp_reset_postdata(); ?>
+    // on réinitialise à la requête principale 
+    wp_reset_postdata(); 
+?>
 
 
 

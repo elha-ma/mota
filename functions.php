@@ -3,12 +3,13 @@
 function mota_setup() {
     //charger le logo du site 
     add_theme_support( 'custom-logo' );
+
     //charger le titre du site
     add_theme_support('title-tag');
+
     //les images vignettes (images vedette)
     add_theme_support( 'post-thumbnails' );
-    
-  
+      
     //Gestion des menus dans wordpress
     add_theme_support('menus');
     register_nav_menu('header','En tête de la page');
@@ -16,22 +17,14 @@ function mota_setup() {
 }
 add_action('after_setup_theme', 'mota_setup');
 
-
-//charger la feuilles de style du thème
+//charger la feuille de style du thème
 function charger_styles() {
     wp_register_style( 'style_site', get_stylesheet_directory_uri() . '/style.css' );
     wp_enqueue_style( 'style_site'); 	   
 }
 add_action( 'wp_enqueue_scripts', 'charger_styles');
 
-
 //Intégrer les scripts JS du site
-function charger_scripts() {
-    wp_register_script( 'scripts_site', get_stylesheet_directory_uri() . '/js/scripts.js' );
-    wp_enqueue_script( 'scripts_site'); 	   
-}
-//add_action( 'wp_enqueue_scripts', 'charger_scripts');
-
 function theme_scripts() {
     wp_enqueue_script('script', get_stylesheet_directory_uri() . '/js/scripts.js', array('jquery'), '', true);
 }
@@ -53,7 +46,6 @@ function action_load_more() {
     );
 
    $response .= require_once( locate_template( 'templates_part/photo_block.php' ) );
-
    exit;
 }
 add_action('wp_ajax_action_load_more', 'action_load_more');
@@ -111,7 +103,7 @@ function filtre_photos() {
         'paged' => $num_page,
         'tax_query' => $tax_query,
     );
-    //var_dump("malika paged: ",$num_page); 
+
     $response .= require_once( locate_template( 'templates_part/photo_block.php' ) );
     exit;
 }
@@ -128,6 +120,7 @@ function action_lightbox(){
 add_action('wp_ajax_action_lightbox', 'action_lightbox');
 add_action('wp_ajax_nopriv_action_lightbox', 'action_lightbox');
 
+//fonction pour afficher les photos suivant et précédent de la lightbox
 function prev_next_lightbox(){
     $response = '';
     $id = $_GET['identifiant']; 
